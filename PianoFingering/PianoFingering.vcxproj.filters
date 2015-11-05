@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Trellis Graph">
+      <UniqueIdentifier>{aff2a89c-2a26-4d4e-a170-7fe2ef838e44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Hand Costs">
+      <UniqueIdentifier>{22d94bb4-4acc-4229-86a4-3faae2a96323}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Hand Costs\Input Data Values">
+      <UniqueIdentifier>{9da1075c-2036-41a0-92df-caa1ddc3af65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Hand Costs\Final Hand Costs">
+      <UniqueIdentifier>{8d35c98b-728a-4f67-a2f5-1c3073903184}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Hand Costs\Intermediate Calculations">
+      <UniqueIdentifier>{0485ee8a-c4a2-468d-bc72-fb57f5b07df0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Hand Costs">
+      <UniqueIdentifier>{53926628-b6bc-4eaa-b312-8b8799dd462d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Trellis Graph">
+      <UniqueIdentifier>{e3bebca6-c52e-4175-a849-518959267165}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Hand Costs\Intermediate Calculations">
+      <UniqueIdentifier>{c266b0a8-5c60-48ca-9073-e40c0f3d9fbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Hand Costs\Final Hand Costs">
+      <UniqueIdentifier>{7796256b-65aa-4601-bbd6-75c263209591}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Hand Costs\Input Data Values">
+      <UniqueIdentifier>{0f98940b-1bb8-4cc6-a184-e893de87b76c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChordFingVariations.h">
+      <Filter>Header Files\Trellis Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphStruct.h">
+      <Filter>Header Files\Trellis Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="NodesLinker.h">
+      <Filter>Header Files\Trellis Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="TrellisGraph_Facade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CostRules.h">
+      <Filter>Header Files\Hand Costs\Input Data Values</Filter>
+    </ClInclude>
+    <ClInclude Include="DistanceTable.h">
+      <Filter>Header Files\Hand Costs\Input Data Values</Filter>
+    </ClInclude>
+    <ClInclude Include="VerticalCost.h">
+      <Filter>Header Files\Hand Costs\Final Hand Costs</Filter>
+    </ClInclude>
+    <ClInclude Include="HorizontalCost.h">
+      <Filter>Header Files\Hand Costs\Final Hand Costs</Filter>
+    </ClInclude>
+    <ClInclude Include="PolyCosts.h">
+      <Filter>Header Files\Hand Costs\Intermediate Calculations</Filter>
+    </ClInclude>
+    <ClInclude Include="MonoCosts.h">
+      <Filter>Header Files\Hand Costs\Intermediate Calculations</Filter>
+    </ClInclude>
+    <ClInclude Include="ICostsCalculator.h">
+      <Filter>Header Files\Hand Costs\Intermediate Calculations</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackWhiteKeys.h">
+      <Filter>Header Files\Hand Costs\Input Data Values</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TrellisGraph_Facade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChordFingVariations.cpp">
+      <Filter>Source Files\Trellis Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="NodesLinker.cpp">
+      <Filter>Source Files\Trellis Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackWhiteKeys.cpp">
+      <Filter>Source Files\Hand Costs\Input Data Values</Filter>
+    </ClCompile>
+    <ClCompile Include="CostRules.cpp">
+      <Filter>Source Files\Hand Costs\Input Data Values</Filter>
+    </ClCompile>
+    <ClCompile Include="DistanceTable.cpp">
+      <Filter>Source Files\Hand Costs\Input Data Values</Filter>
+    </ClCompile>
+    <ClCompile Include="HorizontalCost.cpp">
+      <Filter>Source Files\Hand Costs\Final Hand Costs</Filter>
+    </ClCompile>
+    <ClCompile Include="MonoCosts.cpp">
+      <Filter>Source Files\Hand Costs\Intermediate Calculations</Filter>
+    </ClCompile>
+    <ClCompile Include="PolyCosts.cpp">
+      <Filter>Source Files\Hand Costs\Intermediate Calculations</Filter>
+    </ClCompile>
+    <ClCompile Include="VerticalCost.cpp">
+      <Filter>Source Files\Hand Costs\Final Hand Costs</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

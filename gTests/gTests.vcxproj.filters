@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Hand Costs">
+      <UniqueIdentifier>{d2d4af7f-c3b4-4754-8a8e-11f29b91ee8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Trellis Graph">
+      <UniqueIdentifier>{e4190894-bc07-4ec0-ba64-eec0d79d581e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Hand Costs\Input Data Values">
+      <UniqueIdentifier>{e120318c-6755-4a15-9158-cea21934174c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Hand Costs\Intermediate Calculations">
+      <UniqueIdentifier>{7b3e3bf1-7f30-47b1-8fd2-b6cef5e21580}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Hand Costs\Final Hand Costs">
+      <UniqueIdentifier>{ad823fff-cbd4-4b57-aa37-a80f970f6241}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Hand Costs">
+      <UniqueIdentifier>{96023fb5-18d5-48e1-8e87-e99fd9b61526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Trellis Graph">
+      <UniqueIdentifier>{b846c5b6-18f8-4e6e-984a-ad432222edcf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TrellisGraph_Common.h">
+      <Filter>Header Files\Trellis Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Fingering_CostCommon.h">
+      <Filter>Header Files\Hand Costs</Filter>
+    </ClInclude>
+    <ClInclude Include="Fingering_CostTable.h">
+      <Filter>Header Files\Hand Costs</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Fingering_BlackWhiteKeys.cpp">
+      <Filter>Source Files\Hand Costs\Input Data Values</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Fingering_ChordFingVariations.cpp">
+      <Filter>Source Files\Trellis Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Fingering_CostRules.cpp">
+      <Filter>Source Files\Hand Costs\Input Data Values</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Fingering_DistanceTable.cpp">
+      <Filter>Source Files\Hand Costs\Input Data Values</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Fingering_HorizontalCost.cpp">
+      <Filter>Source Files\Hand Costs\Final Hand Costs</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Fingering_MonoCosts.cpp">
+      <Filter>Source Files\Hand Costs\Intermediate Calculations</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Fingering_NodesLinker.cpp">
+      <Filter>Source Files\Trellis Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Fingering_PolyCosts.cpp">
+      <Filter>Source Files\Hand Costs\Intermediate Calculations</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Fingering_VerticalCost.cpp">
+      <Filter>Source Files\Hand Costs\Final Hand Costs</Filter>
+    </ClCompile>
+    <ClCompile Include="Fingering_CostCommon.cpp">
+      <Filter>Source Files\Hand Costs\Input Data Values</Filter>
+    </ClCompile>
+    <ClCompile Include="Fingering_CostTable.cpp">
+      <Filter>Source Files\Hand Costs\Input Data Values</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Fingering_TrellisGraph_Facade.cpp">
+      <Filter>Source Files\Trellis Graph</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
