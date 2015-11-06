@@ -8,7 +8,7 @@ public:
 	explicit TrellisGraph(std::vector<std::vector<int16_t>> chords, bool leftHand = false);
 	~TrellisGraph() = default;
 
-	std::vector<std::vector<GraphStruct::Chord_>> GetResult() const
+	const std::vector<std::vector<GraphStruct::Chord_>>& GetResult() const
 	{
 		return result_;
 	}
