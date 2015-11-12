@@ -10,12 +10,12 @@ public:
 
 	static int Rule3_PositionChange(std::pair<int16_t, char> note1, std::pair<int16_t, char> note2,
 		std::pair<int16_t, char> note3);
-private:
-	static int Rule4_PositionSize(std::pair<int16_t, char> note1, std::pair<int16_t, char> note3)
-	{
-		return Rule1_StretchComf(note1, note3) / 2;
-	}
-public:
+//private:
+//	static int Rule4_PositionSize(std::pair<int16_t, char> note1, std::pair<int16_t, char> note3)
+//	{
+//		return Rule1_StretchComf(note1, note3) / 2;
+//	}
+//public:
 	static char Rule5_WeakFinger(char finger);
 // http://www.csc.kth.se/utbildning/kth/kurser/DD143X/dkand13/Group7Anders/final/Bassam.Alfarhan.David.Sandberg.report.pdf
 // Page 6

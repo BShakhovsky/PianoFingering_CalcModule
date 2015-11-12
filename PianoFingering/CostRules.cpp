@@ -37,13 +37,23 @@ int CostRules::Rule2_SpanRel(const pair<int16_t, char> note1, const pair<int16_t
 
 // not covered by unit tests:
 int CostRules::Rule3_PositionChange(const pair<int16_t, char> note1, const pair<int16_t, char> note2,
-	const pair<int16_t, char> note3)	// Python-profiler bottle-neck, but remains unoptimized
+	const pair<int16_t, char> note3)	// Python-profiler bottle-neck
 {
-	auto result(Rule4_PositionSize(note1, note3));
+//	auto result(Rule4_PositionSize(note1, note3));
+	// instead copy from Rule 1:
+	auto result(NULL);
 	auto distance(note3.first - note1.first);
 	if (//note1.second == note2.second || note2.second == note3.second ||
 		note3.second == note1.second)									return NULL;
 	else if (note1.second > note3.second)								distance *= -1;
+
+	const auto maxLimit(DistanceTable::MaxComf(note1.second, note3.second));
+	if (distance > maxLimit) result = (distance - maxLimit);
+	else
+	{
+		const auto minLimit(DistanceTable::MinComf(note1.second, note3.second));
+		result = distance < minLimit ? (minLimit - distance) : NULL;
+	}
 
 	if (result) ++result;	// half-change
 	if (1 == note2.second && (
