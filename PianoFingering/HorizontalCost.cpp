@@ -43,7 +43,7 @@ float HorizontalCost::CalcTriples(const vector<pair<int16_t, char>> chord1,
 	const vector<pair<int16_t, char>> chord2, const vector<pair<int16_t, char>> chord3)
 {
 	assert("THERE SHOULD BE AT LEAST ONE NOTE IN ALL THREE CHORDS TO CALCULATE MOVING COST OF TRIPLE"
-		&& !chord1.empty() && !chord2.empty());
+		&& !chord1.empty() && !chord2.empty() && !chord3.empty());
 
 	auto result(0.0f);
 	for (const auto& note1 : chord1)

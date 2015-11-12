@@ -4,7 +4,7 @@
 
 int main()
 {
-	using namespace std;
+	using std::vector;
 
 	const MidiParser_Facade midi("../../Test.mid");
 	vector<vector<int16_t>> chords({ { midi.GetNotes().at(1).front() } });
@@ -17,10 +17,7 @@ int main()
 		if (newTime - lastTime < threshold)
 			chords.back().push_back(*note);
 		else
-		{
-			sort(chords.back().begin(), chords.back().end());
 			chords.push_back({ *note });
-		}
 		lastTime = newTime;
 	}
 
@@ -32,10 +29,13 @@ int main()
 	system("Pause");
 
 	ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
-	for (const auto& path: graph.GetResult())
-		for (const auto& chord: path)
+	for (const auto& path : graph.GetResult())
+	{
+		for (const auto& chord : path)
 		{
-			for (const auto& note: chord) printf("%d", note.second);
+			for (const auto& note : chord) printf("%d", note.second);
 			printf(" ");
 		}
+		puts("\n");
+	}
 }

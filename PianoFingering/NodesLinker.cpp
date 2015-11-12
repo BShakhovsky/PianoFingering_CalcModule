@@ -8,26 +8,28 @@ using namespace GraphStruct;
 
 void NodesLinker::LinkNewNodes(const vector<int16_t> chord)
 {
-	chordVariations_ = ChordFingVariations::CreateCombinations(chord);
-	vector<NodeList_> result;
-
-	if (graph_.empty())	for (const auto& node : chordVariations_)
-	{
-		result.emplace_back(NodeList_({ node }));
-		result.back().back()->second += static_cast<float>(HorizontalCost::Calculate(result.back().back()->first, {}, {}));
-	}
-	else				for (const auto& node : chordVariations_)
-	{
-		const auto minVal(MinPathFinder(node));
-		for (const auto& minPth : minPaths_)
+	if (graph_.empty())
+		for (const auto& node : ChordFingVariations::CreateCombinations(chord))
 		{
-			result.push_back(*minPth);
-			result.back().push_back(node);
+			graph_.emplace_back(NodeList_({ node }));
+			graph_.back().back()->second +=
+				static_cast<float>(HorizontalCost::Calculate(graph_.back().back()->first, {}, {}));
 		}
-		node->second = static_cast<float>(minVal);
+	else
+	{
+		vector<NodeList_> result;
+		for (const auto& node : ChordFingVariations::CreateCombinations(chord))
+		{
+			const auto minVal(MinPathFinder(node));
+			for (const auto& minPth : minPaths_)
+			{
+				result.push_back(*minPth);
+				result.back().push_back(node);
+			}
+			node->second = static_cast<float>(minVal);
+		}
+		graph_.swap(result);
 	}
-
-	graph_.swap(result);
 }
 
 double NodesLinker::MinPathFinder(const shared_ptr<Node_> node)
@@ -37,33 +39,20 @@ double NodesLinker::MinPathFinder(const shared_ptr<Node_> node)
 	minPaths_ = { graph_.cbegin() };
 	for (auto path(graph_.cbegin()); path != graph_.cend(); ++path)
 	{
-		auto newVal(0.0);
-		if (path->size() >= 2)
-		{
-			auto pathPrev(path->crbegin());
-			++pathPrev;
-			newVal = path->back()->second + node->second + HorizontalCost::Calculate(pathPrev->get()->first,
-				path->back()->first, node->first);
-		}
-		else newVal = path->back()->second + node->second + HorizontalCost::Calculate(
-			path->back()->first, node->first, {});
+		const auto newVal(path->back()->second + node->second + (path->size() >= 2
+			? HorizontalCost::Calculate(path->at(path->size() - 2)->first,	path->back()->first, node->first)
+			: HorizontalCost::Calculate(									path->back()->first, node->first, {})));
 
-		MinValCompare(&minVal, &newVal, path);
+		if (newVal < minVal)
+		{
+			minVal = newVal;
+			minPaths_ = { path };
+		}
+		else if (newVal == minVal)
+			minPaths_.push_back(path);
 	}
 
 	return minVal;
-}
-
-void NodesLinker::MinValCompare(double* minVal, double* newVal, Graph_::const_iterator path)
-{
-	if (*newVal < *minVal)
-	{
-		*minVal = *newVal;
-		minPaths_.clear();
-		minPaths_.push_back(path);
-	}
-	else if (*newVal == *minVal)
-		minPaths_.push_back(path);
 }
 
 class PathCompare

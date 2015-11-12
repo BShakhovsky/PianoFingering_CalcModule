@@ -288,9 +288,9 @@ TEST_F(NodesLinker_F, EllmenreichSpinningSong)	// Page 2, Figure 6
 //	ASSERT_EQ('\4', graph.GetResultedGraph().front().at(42)->first.front().second);
 //	ASSERT_EQ('\3', graph.GetResultedGraph().front().at(43)->first.front().second);
 	ASSERT_EQ('\1', graph.GetResultedGraph().front().at(44)->first.front().second);
-//	ASSERT_EQ('\5', graph.GetResultedGraph().front().at(45)->first.back().second);
-//	ASSERT_EQ('\1', graph.GetResultedGraph().front().at(46)->first.front().second);
-//	ASSERT_EQ('\4', graph.GetResultedGraph().front().at(46)->first.back().second);
+//	ASSERT_EQ('\5', graph.GetResultedGraph().front().at(44)->first.back().second);
+	ASSERT_EQ('\1', graph.GetResultedGraph().front().at(45)->first.front().second);
+	ASSERT_EQ('\4', graph.GetResultedGraph().front().at(45)->first.back().second);
 	ASSERT_EQ('\3', graph.GetResultedGraph().front().back()->first.front().second);
 	ASSERT_EQ('\5', graph.GetResultedGraph().front().back()->first.back().second);
 }
@@ -576,10 +576,10 @@ TEST_F(NodesLinker_F, FurElise)	// Figure 12
 	ASSERT_EQ('\4', graph.GetResultedGraph().front().at(24)->first.front().second) << "may also be 3";
 	ASSERT_EQ('\3', graph.GetResultedGraph().front().at(25)->first.front().second) << "may also be 2";
 	ASSERT_EQ('\2', graph.GetResultedGraph().front().at(26)->first.front().second) << "may also be 1";
-//	ASSERT_EQ('\1', graph.GetResultedGraph().front().at(27)->first.front().second);
-//	ASSERT_EQ('\2', graph.GetResultedGraph().front().at(28)->first.front().second);
-//	ASSERT_EQ('\4', graph.GetResultedGraph().front().at(29)->first.front().second);
-//	ASSERT_EQ('\5', graph.GetResultedGraph().front().at(30)->first.front().second);
+	ASSERT_EQ('\1', graph.GetResultedGraph().front().at(27)->first.front().second);
+	ASSERT_EQ('\2', graph.GetResultedGraph().front().at(28)->first.front().second);
+	ASSERT_EQ('\4', graph.GetResultedGraph().front().at(29)->first.front().second);
+	ASSERT_EQ('\5', graph.GetResultedGraph().front().at(30)->first.front().second);
 	ASSERT_EQ('\1', graph.GetResultedGraph().front().at(31)->first.front().second);
 //	ASSERT_EQ('\5', graph.GetResultedGraph().front().at(32)->first.front().second);
 //	ASSERT_EQ('\4', graph.GetResultedGraph().front().at(33)->first.front().second);
@@ -917,15 +917,15 @@ TEST_F(NodesLinker_F, GFHandel_DSuite_HWV437_Saraband)	// Page 28, Figure 14
 TEST_F(NodesLinker_F, AllOfMe)	// Figure 4.1
 {
 	NodesLinker graph;
-	graph.LinkNewNodes({ DO_2 });
-	graph.LinkNewNodes({ SO_1 });
-	graph.LinkNewNodes({ MI_1 });
-	graph.LinkNewNodes({ DO_2 });
-	graph.LinkNewNodes({ RE_2 });
-	graph.LinkNewNodes({ DO_2 });
+	graph.LinkNewNodes({ DO_1 });
+	graph.LinkNewNodes({ SO });
+	graph.LinkNewNodes({ MI });
+	graph.LinkNewNodes({ DO_1 });
+	graph.LinkNewNodes({ RE_1 });
+	graph.LinkNewNodes({ DO_1 });
 	graph.LinkNewNodes({ SI });
-	graph.LinkNewNodes({ SO_S_1 });
-	graph.LinkNewNodes({ MI_1 });
+	graph.LinkNewNodes({ SO_S });
+	graph.LinkNewNodes({ MI });
 	graph.RemoveExpensivePaths();
 	ASSERT_EQ(1, graph.GetResultedGraph().size());
 	ASSERT_EQ('\5', graph.GetResultedGraph().front().front()->first.front().second);
@@ -934,9 +934,9 @@ TEST_F(NodesLinker_F, AllOfMe)	// Figure 4.1
 	ASSERT_EQ('\4', graph.GetResultedGraph().front().at(3)->first.front().second) << "may also be 2";
 	ASSERT_EQ('\5', graph.GetResultedGraph().front().at(4)->first.front().second) << "may also be 3";
 	ASSERT_EQ('\4', graph.GetResultedGraph().front().at(5)->first.front().second) << "may also be 2";
-	ASSERT_EQ('\1', graph.GetResultedGraph().front().at(6)->first.front().second) << "may also be 3";
-//	ASSERT_EQ('\2', graph.GetResultedGraph().front().at(7)->first.front().second);
-//	ASSERT_EQ('\1', graph.GetResultedGraph().front().back()->first.front().second);
+	ASSERT_EQ('\3', graph.GetResultedGraph().front().at(6)->first.front().second) << "may also be 1";
+	ASSERT_EQ('\2', graph.GetResultedGraph().front().at(7)->first.front().second);
+	ASSERT_EQ('\1', graph.GetResultedGraph().front().back()->first.front().second);
 }
 
 TEST_F(NodesLinker_F, AintMisbehavin)	// Figure 4.2
@@ -1038,16 +1038,16 @@ TEST_F(NodesLinker_F, InterleavedTriad)	// Figure 4.4
 	graph.LinkNewNodes({ DO_1 });
 	graph.RemoveExpensivePaths();
 	ASSERT_EQ(1, graph.GetResultedGraph().size());
-//	ASSERT_EQ('\4', graph.GetResultedGraph().front().front()->first.front().second);
-//	ASSERT_EQ('\2', graph.GetResultedGraph().front().at(1)->first.front().second);
-//	ASSERT_EQ('\1', graph.GetResultedGraph().front().at(2)->first.front().second);
-//	ASSERT_EQ('\2', graph.GetResultedGraph().front().at(3)->first.front().second);
-//	ASSERT_EQ('\1', graph.GetResultedGraph().front().at(4)->first.front().second);
+//5	ASSERT_EQ('\4', graph.GetResultedGraph().front().front()->first.front().second);
+//4	ASSERT_EQ('\2', graph.GetResultedGraph().front().at(1)->first.front().second);
+//2	ASSERT_EQ('\1', graph.GetResultedGraph().front().at(2)->first.front().second);
+//5	ASSERT_EQ('\2', graph.GetResultedGraph().front().at(3)->first.front().second);
+//4	ASSERT_EQ('\1', graph.GetResultedGraph().front().at(4)->first.front().second);
 	ASSERT_EQ('\2', graph.GetResultedGraph().front().at(5)->first.front().second);
 
 	ASSERT_EQ('\1', graph.GetResultedGraph().front().at(6)->first.front().second);
-//	ASSERT_EQ('\2', graph.GetResultedGraph().front().at(6)->first.at(1).second);
-//	ASSERT_EQ('\4', graph.GetResultedGraph().front().at(6)->first.back().second);
+//3	ASSERT_EQ('\2', graph.GetResultedGraph().front().at(6)->first.at(1).second);
+//5	ASSERT_EQ('\4', graph.GetResultedGraph().front().at(6)->first.back().second);
 
 	ASSERT_EQ('\1', graph.GetResultedGraph().front().at(7)->first.front().second);
 	ASSERT_EQ('\2', graph.GetResultedGraph().front().at(8)->first.front().second);

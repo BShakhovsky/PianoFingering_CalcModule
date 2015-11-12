@@ -84,13 +84,12 @@ TEST_F(TrellisGraph_F, GFHandel_DSuite_HWV437_Saraband_LeftHand)	// Page 28, Fig
 	ASSERT_EQ('\2', trellis.GetResult().front().at(10).front().second);
 	ASSERT_EQ('\5', trellis.GetResult().front().at(11).front().second);
 
-//	ASSERT_EQ('\3', trellis.GetResult().front().at(11).front().second);
-//	ASSERT_EQ('\2', trellis.GetResult().front().at(12).front().second);
-//	ASSERT_EQ('\5', trellis.GetResult().front().at(13).front().second);
-//	ASSERT_EQ('\4', trellis.GetResult().front().at(14).front().second);
-//	ASSERT_EQ('\3', trellis.GetResult().front().at(15).front().second);
-//	ASSERT_EQ('\2', trellis.GetResult().front().at(16).front().second);
-//	ASSERT_EQ('\5', trellis.GetResult().front().at(17).front().second);
+//	ASSERT_EQ('\3', trellis.GetResult().front().at(12).front().second);
+//	ASSERT_EQ('\2', trellis.GetResult().front().at(13).front().second);
+//	ASSERT_EQ('\5', trellis.GetResult().front().at(14).front().second);
+//	ASSERT_EQ('\4', trellis.GetResult().front().at(15).front().second);
+//	ASSERT_EQ('\3', trellis.GetResult().front().at(16).front().second) << "may also be 2";
+//	ASSERT_EQ('\5', trellis.GetResult().front().at(17).front().second) << "may also be 4";
 	ASSERT_EQ('\1', trellis.GetResult().front().at(18).front().second);
 
 	ASSERT_EQ('\5', trellis.GetResult().front().at(19).front().second);

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChordFingVariations">
+    <Position X="6.75" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAhAAAAABABAAAAAAAAABAAAAAAQAAAKAAAAIAAAAA=</HashCode>
+      <FileName>ChordFingVariations.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HorizontalCost">
+    <Position X="3.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAEAAAAAACAAAAAAAAQQAAAAAAA=</HashCode>
+      <FileName>HorizontalCost.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BlackWhiteKeys">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEgAAAAAAAAAAEAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>BlackWhiteKeys.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CostRules">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgACAABCAAUJAAFAAAKhCAAAAIAAAAAAAAgAAAAEA=</HashCode>
+      <FileName>CostRules.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DistanceTable">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAgACAAADAAAAEAAEAAAAAAAAgAAAEAAAAAAAABA=</HashCode>
+      <FileName>DistanceTable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ICostsCalculator">
+    <Position X="4.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAABAAAIAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>ICostsCalculator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MonoCosts">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAIAAAAAAAAAAACAAgAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>MonoCosts.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NodesLinker">
+    <Position X="8.5" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAKAAAAAAAAAAAAAAAQAAGCAAAAAAAAAAAAEAAAEA=</HashCode>
+      <FileName>NodesLinker.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrellisGraph">
+    <Position X="10" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAgEAgAQAAAAA=</HashCode>
+      <FileName>TrellisGraph_Facade.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VerticalCost">
+    <Position X="5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAIAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VerticalCost.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PolyCosts">
+    <Position X="5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAIAAAAAAAQAABAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>PolyCosts.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Typedef Name="GraphStruct::Pitch_" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GraphStruct.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="GraphStruct::Chord_" Collapsed="true">
+    <Position X="6.75" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GraphStruct.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="GraphStruct::Node_" Collapsed="true">
+    <Position X="6.75" Y="1.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GraphStruct.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="GraphStruct::NodeList_" Collapsed="true">
+    <Position X="6.75" Y="2" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GraphStruct.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="GraphStruct::Graph_" Collapsed="true">
+    <Position X="6.75" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GraphStruct.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

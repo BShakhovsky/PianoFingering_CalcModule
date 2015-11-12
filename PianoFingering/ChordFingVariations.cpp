@@ -8,20 +8,24 @@ using namespace GraphStruct;
 NodeList_ ChordFingVariations::CreateCombinations(const vector<int16_t> chord)
 {
 	const auto fingerings(GetFingerCombinations(chord.size()));
+	auto sortedChord(chord);
+	sort(sortedChord.begin(), sortedChord.end());
 	NodeList_ result;
 	result.reserve(fingerings.size());
 
 	for (const auto& variant : fingerings)
 	{
-		assert("NUMBER OF FINGERS SHOULD BE EQUAL TO THE NUMBER OF NOTES IN A CHORD" && variant.size() == chord.size());
+		assert("NUMBER OF FINGERS SHOULD BE EQUAL TO THE NUMBER OF NOTES IN A CHORD"
+			&& variant.size() == sortedChord.size());
 		auto subResult(make_shared<Node_>());
 		
-		subResult->first.reserve(chord.size());
-		for (size_t i(NULL); i < chord.size(); ++i)	subResult->first.emplace_back(make_pair(chord.at(i), variant.at(i)));
-		if		(chord.size() >= 2)					subResult->second = static_cast<float>(
-														VerticalCost::Calculate(subResult->first));
-		else if (chord.size() == 1)					subResult->second = 0.0f;
-		else										assert(!"THERE HAVE TO BE AT LEAST ONE NOTE :)");
+		subResult->first.reserve(sortedChord.size());
+		for (size_t i(NULL); i < sortedChord.size(); ++i)
+			subResult->first.emplace_back(make_pair(sortedChord.at(i), variant.at(i)));
+		if		(sortedChord.size() >= 2)	subResult->second = static_cast<float>(
+												VerticalCost::Calculate(subResult->first));
+		else if (sortedChord.size() == 1)	subResult->second = 0.0f;
+		else								assert(!"THERE HAS TO BE AT LEAST ONE NOTE :)");
 		
 		result.push_back(subResult);
 	}

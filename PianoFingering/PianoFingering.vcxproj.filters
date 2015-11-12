@@ -123,4 +123,7 @@
       <Filter>Source Files\Hand Costs\Final Hand Costs</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
 </Project>

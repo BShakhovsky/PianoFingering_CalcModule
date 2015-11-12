@@ -6,47 +6,46 @@
 using std::pair;
 
 int CostRules::Rule1_StretchComf(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
+// Python-profiler bottle-neck
 {
-	auto distance(note2.first - note1.first);
 	if (note1.second == note2.second) return NULL;
-	else if (note1.second > note2.second) distance *= -1;
+	const auto distance(note1.second < note2.second ? note2.first - note1.first : note1.first - note2.first);
 
-	if (distance < DistanceTable::MinComf(note1.second, note2.second))
-		return (DistanceTable::MinComf(note1.second, note2.second) - distance) * 2;
-	else if (distance > DistanceTable::MaxComf(note1.second, note2.second))
-		return (distance - DistanceTable::MaxComf(note1.second, note2.second)) * 2;
-	else return NULL;
+	// Slightly optimized:
+	const auto maxLimit(DistanceTable::MaxComf(note1.second, note2.second));
+	if (distance > maxLimit) return (distance - maxLimit) * 2;
+	else
+	{
+		const auto minLimit(DistanceTable::MinComf(note1.second, note2.second));
+		return distance < minLimit ? (minLimit - distance) * 2 : NULL;
+	}
 }
 int CostRules::Rule2_SpanRel(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
 {
-	auto distance(note2.first - note1.first);
 	if (note1.second == note2.second) return NULL;
-	else if (note1.second > note2.second) distance *= -1;
+	const auto distance(note1.second < note2.second ? note2.first - note1.first : note1.first - note2.first);
 
-	auto coeff(NULL);
-	if (1 == note1.second || 1 == note2.second) coeff = 1;
-	else										coeff = 2;
-
-	if (distance < DistanceTable::MinRel(note1.second, note2.second))
-		return (DistanceTable::MinRel(note1.second, note2.second) - distance) * coeff;
-	else if (distance > DistanceTable::MaxRel(note1.second, note2.second))
-		return (distance - DistanceTable::MaxRel(note1.second, note2.second)) * coeff;
-	else return NULL;
+	// Slightly optimized:
+	const auto maxLimit(DistanceTable::MaxRel(note1.second, note2.second));
+	if (distance > maxLimit) return (distance - maxLimit) * (1 == note1.second || 1 == note2.second ? 1 : 2);
+	else
+	{
+		const auto minLimit(DistanceTable::MinRel(note1.second, note2.second));
+		return distance < minLimit ? (minLimit - distance) * (1 == note1.second || 1 == note2.second ? 1 : 2) : NULL;
+	}
 }
 
 // not covered by unit tests:
 int CostRules::Rule3_PositionChange(const pair<int16_t, char> note1, const pair<int16_t, char> note2,
-	const pair<int16_t, char> note3)
+	const pair<int16_t, char> note3)	// Python-profiler bottle-neck, but remains unoptimized
 {
 	auto result(Rule4_PositionSize(note1, note3));
-
 	auto distance(note3.first - note1.first);
 	if (//note1.second == note2.second || note2.second == note3.second ||
 		note3.second == note1.second)									return NULL;
 	else if (note1.second > note3.second)								distance *= -1;
 
-	if (distance < DistanceTable::MinComf(note1.second, note3.second) ||
-		distance > DistanceTable::MaxComf(note1.second, note3.second))	++result;	// half-change
+	if (result) ++result;	// half-change
 	if (1 == note2.second && (
 		distance < DistanceTable::MinPrac(note1.second, note3.second) ||
 		distance > DistanceTable::MaxPrac(note1.second, note3.second)
@@ -125,9 +124,8 @@ char CostRules::Rule11_ThumbPassing(const pair<int16_t, char> note1, const pair<
 	if 		(note1.second == note2.second)	return NULL;
 	else if (note1.second > note2.second)	distance *= -1;
 
-	if (distance < 0 && (1 == note1.second || 1 == note2.second) && (
-		BlackWhiteKeys::IsWhite(note1.first) && BlackWhiteKeys::IsWhite(note2.first) ||
-		BlackWhiteKeys::IsBlack(note1.first) && BlackWhiteKeys::IsBlack(note2.first)))	return 1;
+	if (distance < 0 && (1 == note1.second || 1 == note2.second) &&
+		BlackWhiteKeys::IsBlack(note1.first) == BlackWhiteKeys::IsBlack(note2.first))	return 1;
 	else																				return NULL;
 }
 char CostRules::Rule12_ThumbCross_Black(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
@@ -156,15 +154,17 @@ char CostRules::Rule13_ThreeSameFinger(const pair<int16_t, char> note1, const pa
 
 int CostRules::Rule14_MaxPractical(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
 {
-	auto distance(note2.first - note1.first);
 	if (note1.second == note2.second) return NULL;
-	else if (note1.second > note2.second) distance *= -1;
+	const auto distance(note1.second < note2.second ? note2.first - note1.first : note1.first - note2.first);
 
-	if (distance < DistanceTable::MinPrac(note1.second, note2.second))
-		return (DistanceTable::MinPrac(note1.second, note2.second) - distance) * 10;
-	else if (distance > DistanceTable::MaxPrac(note1.second, note2.second))
-		return (distance - DistanceTable::MaxPrac(note1.second, note2.second)) * 10;
-	else return NULL;
+	// Slightly optimized:
+	const auto maxLimit(DistanceTable::MaxPrac(note1.second, note2.second));
+	if (distance > maxLimit) return (distance - maxLimit) * 10;
+	else
+	{
+		const auto minLimit(DistanceTable::MinPrac(note1.second, note2.second));
+		return distance < minLimit ? (minLimit - distance) * 10 : NULL;
+	}
 }
 char CostRules::Rule15_SameNote(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
 {
