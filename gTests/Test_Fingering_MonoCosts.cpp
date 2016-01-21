@@ -1,6 +1,6 @@
 # include "stdafx.h"
-# include "..\PianoFingering\MonoCosts.h"
-# include "..\PianoFingering\BlackWhiteKeys.h"
+# include "PianoFingering\MonoCosts.h"
+# include "BlackWhiteKeys.h"
 # include "Fingering_CostCommon.h"
 # include "Fingering_CostTable.h"
 

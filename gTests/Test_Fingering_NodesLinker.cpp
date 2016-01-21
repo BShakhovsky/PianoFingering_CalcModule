@@ -1,5 +1,5 @@
 # include "stdafx.h"
-# include "..\PianoFingering\NodesLinker.h"
+# include "PianoFingering\NodesLinker.h"
 # include "TrellisGraph_Common.h"
 
 using gTest::TrellisGraph_Common;

@@ -18,48 +18,6 @@ public:
 	}
 };
 
-class FingersSort
-{
-public:
-	FingersSort() = default;
-	~FingersSort() = default;
-	FingersSort(const FingersSort&) = default;
-	FingersSort& operator = (const FingersSort&) = default;
-
-	bool operator () (const pair<int16_t, char>& lhs, const pair<int16_t, char>& rhs) const
-	{
-		return lhs.second < rhs.second;
-	}
-};
-
-class NotesSort
-{
-public:
-	NotesSort() = default;
-	~NotesSort() = default;
-	NotesSort(const NotesSort&) = default;
-	NotesSort& operator = (const NotesSort&) = default;
-
-	bool operator () (const pair<int16_t, char>& lhs, const pair<int16_t, char>& rhs) const
-	{
-		return lhs.first < rhs.first;
-	}
-};
-
-class SameNote
-{
-public:
-	SameNote() = default;
-	~SameNote() = default;
-	SameNote(const SameNote&) = default;
-	SameNote& operator = (const SameNote&) = default;
-
-	bool operator () (const pair<int16_t, char>& lhs, const pair<int16_t, char>& rhs) const
-	{
-		return lhs.first == rhs.first;
-	}
-};
-
 class SameFinger
 {
 public:
@@ -81,14 +39,27 @@ double VerticalCost::Calculate(const vector<pair<int16_t, char>> notes_fingers)
 		&& notes_fingers.size() >= 2 && notes_fingers.size() <= 5);
 
 	assert("NOTES SHOULD BE SORTED IN ASCENDING ORDER BEFORE CHORD COST CALCULATION"
-		&& is_sorted(notes_fingers.cbegin(), notes_fingers.cend(), NotesSort()));
+		&& is_sorted(notes_fingers.cbegin(), notes_fingers.cend(),
+			[](const pair<int16_t, char>& lhs, const pair<int16_t, char>& rhs)
+			{
+				return lhs.first < rhs.first;
+			}));
 	assert("ALL NOTES IN A CHORD MUST BE DIFFERENT"
-		&& adjacent_find(notes_fingers.cbegin(), notes_fingers.cend(), SameNote()) == notes_fingers.cend());
+		&& adjacent_find(notes_fingers.cbegin(), notes_fingers.cend(),
+			[](const pair<int16_t, char>& lhs, const pair<int16_t, char>& rhs)
+			{
+				return lhs.first == rhs.first;
+			}
+		) == notes_fingers.cend());
 # ifdef _DEBUG
 	auto temp(notes_fingers);
 	const auto tempEnd(remove_if(temp.begin(), temp.end(), IsThumb()));
 
-	assert("ONLY THUMB PASSING IS ALLOWED BY CURRENT ALGORITHM" && is_sorted(temp.begin(), tempEnd, FingersSort()));
+	assert("ONLY THUMB PASSING IS ALLOWED BY CURRENT ALGORITHM" && is_sorted(temp.begin(), tempEnd,
+		[](const pair<int16_t, char>& lhs, const pair<int16_t, char>& rhs)
+		{
+			return lhs.second < rhs.second;
+		}));
 	assert("ALL FINGERS IN A CHORD MUST BE DIFFERENT" && adjacent_find(temp.begin(), tempEnd, SameFinger()) == tempEnd);
 # endif
 	assert("ALL FINGERS IN A CHORD MUST BE DIFFERENT"

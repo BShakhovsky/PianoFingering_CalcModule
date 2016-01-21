@@ -1,6 +1,6 @@
 # include "stdafx.h"
 # include "NodesLinker.h"
-# include "..\PianoFingering\HorizontalCost.h"
+# include "PianoFingering\HorizontalCost.h"
 
 using namespace std;
 using namespace Visualizer;

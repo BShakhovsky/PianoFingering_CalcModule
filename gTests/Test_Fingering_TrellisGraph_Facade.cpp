@@ -1,5 +1,5 @@
 # include "stdafx.h"
-# include "..\PianoFingering\TrellisGraph_Facade.h"
+# include "TrellisGraph_Facade.h"
 # include "TrellisGraph_Common.h"
 
 using std::vector;
@@ -31,6 +31,8 @@ TEST_F(TrellisGraph_F, JSBach_Menuet4_BWVanh114_LeftHand)	// Page 27, Figure 12
 	vector<vector<int16_t>> chords( { { SO, SI, RE_1 }, { LA }, { SI }, { DO_1 }, { SI },
 	{ LA }, { SO }, { RE_1 }, { SI }, { SO }, { RE_1 }, { RE }, { DO_1 }, { SI }, { LA } } );
 	TrellisGraph trellis(chords, true);
+	while (trellis.NextStep());
+	trellis.Finish();
 
 	ASSERT_EQ(1, trellis.GetResult().size());
 	ASSERT_EQ(RE_1, trellis.GetResult().front().front().front().first);
@@ -65,6 +67,9 @@ TEST_F(TrellisGraph_F, GFHandel_DSuite_HWV437_Saraband_LeftHand)	// Page 28, Fig
 	{ SI_B_1 }, { LA_1 }, { SO_1 }, { FA_1 }, { MI_1 } });
 
 	TrellisGraph trellis(chords, true);
+	while (trellis.NextStep());
+	trellis.Finish();
+
 	ASSERT_EQ(1, trellis.GetResult().size());
 	ASSERT_EQ('\3', trellis.GetResult().front().front().front().second) << "may also be 4";
 	ASSERT_EQ('\1', trellis.GetResult().front().at(1).front().second);

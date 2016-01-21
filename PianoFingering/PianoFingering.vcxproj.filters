@@ -60,9 +60,6 @@
     <ClInclude Include="NodesLinker.h">
       <Filter>Header Files\Trellis Graph</Filter>
     </ClInclude>
-    <ClInclude Include="TrellisGraph_Facade.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CostRules.h">
       <Filter>Header Files\Hand Costs\Input Data Values</Filter>
     </ClInclude>
@@ -84,8 +81,11 @@
     <ClInclude Include="ICostsCalculator.h">
       <Filter>Header Files\Hand Costs\Intermediate Calculations</Filter>
     </ClInclude>
-    <ClInclude Include="BlackWhiteKeys.h">
+    <ClInclude Include="..\BlackWhiteKeys.h">
       <Filter>Header Files\Hand Costs\Input Data Values</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TrellisGraph_Facade.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,5 @@
 # include "stdafx.h"
-# include "..\PianoFingering\BlackWhiteKeys.h"
+# include "BlackWhiteKeys.h"
 
 TEST(Keys, WhiteBlack)
 {

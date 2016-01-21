@@ -1,5 +1,5 @@
 # include "stdafx.h"
-# include "..\PianoFingering\DistanceTable.h"
+# include "PianoFingering\DistanceTable.h"
 
 using boost::function;
 

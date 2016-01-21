@@ -7,7 +7,9 @@
 # include <algorithm>
 # include <cassert>
 # include <functional>
+# include <iterator>
 # include <memory>
+# include <set>
 # include <vector>
 
 # pragma warning(push)
@@ -16,4 +18,4 @@
 # pragma warning(pop)
 
 # pragma warning(disable:4514)
-# pragma warning(disable:4625 4626)
+# pragma warning(disable:4625 4626 5026 5027)

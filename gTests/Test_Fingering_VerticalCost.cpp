@@ -1,5 +1,5 @@
 # include "stdafx.h"
-# include "..\PianoFingering\VerticalCost.h"
+# include "PianoFingering\VerticalCost.h"
 
 // not finished - only asserts are checked:
 TEST(VerticalCost_F, Calculate)

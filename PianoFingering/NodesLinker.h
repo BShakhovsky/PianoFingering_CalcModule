@@ -18,7 +18,7 @@ public:
 	}
 	void RemoveExpensivePaths();
 
-	void LinkNewNodes(std::vector<int16_t> chord);
+	void LinkNewNodes(const std::vector<int16_t>& chord);
 private:
 	double MinPathFinder(std::shared_ptr<GraphStruct::Node_>);
 };

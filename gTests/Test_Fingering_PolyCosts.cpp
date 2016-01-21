@@ -1,5 +1,5 @@
 # include "stdafx.h"
-# include "..\PianoFingering\PolyCosts.h"
+# include "PianoFingering\PolyCosts.h"
 # include "Fingering_CostCommon.h"
 # include "Fingering_CostTable.h"
 

@@ -1,12 +1,12 @@
 # include "stdafx.h"
-# include "..\PianoFingering\TrellisGraph_Facade.h"
+# include "TrellisGraph_Facade.h"
 # include "MidiParser_Facade.h"
 
 int main()
 {
 	using std::vector;
 
-	const MidiParser_Facade midi("../../Test.mid");
+	const MidiParser_Facade midi("../../../Test.mid");
 	vector<vector<int16_t>> chords({ { midi.GetNotes().at(1).front() } });
 	auto lastTime(static_cast<int>(midi.GetMilliSeconds().at(1).front()));
 	constexpr auto threshold(7);
@@ -23,9 +23,11 @@ int main()
 
 	puts("\nFingering calculations started...");
 	const auto timeStart(clock());
-	const TrellisGraph graph(chords);
+	TrellisGraph graph(chords);
+	for (size_t i(1); i; i = graph.NextStep()) printf("\r%zu%%", i * 100 / chords.size());
+	graph.Finish();
 	const auto duration(clock() - timeStart);
-	printf("Fingering calculation time = %g seconds\n", static_cast<float>(duration) / CLOCKS_PER_SEC);
+	printf("\nFingering calculation time = %g seconds\n", static_cast<float>(duration) / CLOCKS_PER_SEC);
 	system("Pause");
 
 	ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);

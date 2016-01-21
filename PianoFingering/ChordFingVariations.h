@@ -6,7 +6,7 @@ class ChordFingVariations abstract : private boost::noncopyable
 	ChordFingVariations() = delete;
 	~ChordFingVariations() = delete;
 public:
-	static GraphStruct::NodeList_ CreateCombinations(std::vector<int16_t>);
+	static GraphStruct::NodeList_ CreateCombinations(const std::vector<int16_t>&);
 private:
 	static std::vector<std::vector<char>> GetFingerCombinations(size_t numberOfFingers);
 

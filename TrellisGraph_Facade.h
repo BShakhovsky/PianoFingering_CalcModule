@@ -1,19 +1,22 @@
 # pragma once
-# include "GraphStruct.h"
+# include "PianoFingering\GraphStruct.h"
+# pragma comment(lib, "PianoFingering.lib")
 
 class TrellisGraph
 {
+	static constexpr auto NOTE_MI = 136i16;
+					// note "mi" for left hand is mirrow-equivalent to note "do" for right hand
 	TrellisGraph() = delete;
 public:
 	explicit TrellisGraph(std::vector<std::vector<int16_t>> chords, bool leftHand = false);
-	~TrellisGraph() = default;
+	~TrellisGraph();
 
-	const std::vector<std::vector<GraphStruct::Chord_>>& GetResult() const
-	{
-		return result_;
-	}
+	size_t NextStep();
+	void Finish();
+
+	const std::vector<std::vector<GraphStruct::Chord_>>& GetResult() const;
 private:
-	std::vector<std::vector<GraphStruct::Chord_>> result_;
+	struct TrellisGraph_pimpl* pimpl_;
 
 	TrellisGraph(const TrellisGraph&) = delete;
 	TrellisGraph(const TrellisGraph&&) = delete;

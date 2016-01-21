@@ -1,5 +1,5 @@
 # include "stdafx.h"
-# include "..\PianoFingering\HorizontalCost.h"
+# include "PianoFingering\HorizontalCost.h"
 
 using namespace std;
 using namespace testing;

@@ -1,6 +1,6 @@
 # include "stdafx.h"
 # include "Fingering_CostCommon.h"
-# include "..\PianoFingering\BlackWhiteKeys.h"
+# include "BlackWhiteKeys.h"
 
 using testing::Test;
 using gTest::CostCommon;

@@ -6,7 +6,7 @@
 using namespace std;
 using namespace GraphStruct;
 
-void NodesLinker::LinkNewNodes(const vector<int16_t> chord)
+void NodesLinker::LinkNewNodes(const vector<int16_t>& chord)
 {
 	if (graph_.empty())
 		for (const auto& node : ChordFingVariations::CreateCombinations(chord))
