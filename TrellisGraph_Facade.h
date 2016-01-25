@@ -1,5 +1,4 @@
 # pragma once
-# include "PianoFingering\GraphStruct.h"
 # pragma comment(lib, "PianoFingering.lib")
 
 class TrellisGraph
@@ -14,7 +13,7 @@ public:
 	size_t NextStep();
 	void Finish();
 
-	const std::vector<std::vector<GraphStruct::Chord_>>& GetResult() const;
+	const std::vector<std::vector<std::pair<int16_t, std::string>>>& GetResult() const;
 private:
 	struct TrellisGraph_pimpl* pimpl_;
 

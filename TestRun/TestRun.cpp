@@ -31,13 +31,11 @@ int main()
 	system("Pause");
 
 	ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
-	for (const auto& path : graph.GetResult())
+	for (const auto& chord : graph.GetResult())
 	{
-		for (const auto& chord : path)
-		{
-			for (const auto& note : chord) printf("%d", note.second);
-			printf(" ");
-		}
-		puts("\n");
+		printf("|");
+		for (const auto& note : chord) printf("%s|", note.second.c_str());
+		printf("\t");
 	}
+	puts("\n");
 }

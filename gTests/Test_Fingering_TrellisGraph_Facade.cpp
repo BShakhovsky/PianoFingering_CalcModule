@@ -34,28 +34,27 @@ TEST_F(TrellisGraph_F, JSBach_Menuet4_BWVanh114_LeftHand)	// Page 27, Figure 12
 	while (trellis.NextStep());
 	trellis.Finish();
 
-	ASSERT_EQ(1, trellis.GetResult().size());
-	ASSERT_EQ(RE_1, trellis.GetResult().front().front().front().first);
-	ASSERT_EQ('\1', trellis.GetResult().front().front().front().second);
-	ASSERT_EQ(SI, trellis.GetResult().front().front().at(1).first);
-	ASSERT_EQ('\2', trellis.GetResult().front().front().at(1).second);
-	ASSERT_EQ(SO, trellis.GetResult().front().front().back().first);
-	ASSERT_EQ('\4', trellis.GetResult().front().front().back().second);
+	ASSERT_EQ(RE_1, trellis.GetResult().front().front().first);
+	ASSERT_STREQ("1", trellis.GetResult().front().front().second.c_str());
+	ASSERT_EQ(SI, trellis.GetResult().front().at(1).first);
+	ASSERT_STREQ("2", trellis.GetResult().front().at(1).second.c_str());
+	ASSERT_EQ(SO, trellis.GetResult().front().back().first);
+	ASSERT_STREQ("4", trellis.GetResult().front().back().second.c_str());
 
-	ASSERT_EQ('\3', trellis.GetResult().front().at(1).front().second);
-	ASSERT_EQ('\2', trellis.GetResult().front().at(2).front().second);
-	ASSERT_EQ('\1', trellis.GetResult().front().at(3).front().second);
-	ASSERT_EQ('\2', trellis.GetResult().front().at(4).front().second);
-	ASSERT_EQ('\3', trellis.GetResult().front().at(5).front().second);
-	ASSERT_EQ('\4', trellis.GetResult().front().at(6).front().second);
-	ASSERT_EQ('\1', trellis.GetResult().front().at(7).front().second);
-	ASSERT_EQ('\2', trellis.GetResult().front().at(8).front().second);
-//	ASSERT_EQ('\3', trellis.GetResult().front().at(9).front().second);
-	ASSERT_EQ('\1', trellis.GetResult().front().at(10).front().second);
-//	ASSERT_EQ('\5', trellis.GetResult().front().at(11).front().second);
-	ASSERT_EQ('\1', trellis.GetResult().front().at(12).front().second);
-	ASSERT_EQ('\2', trellis.GetResult().front().at(13).front().second);
-	ASSERT_EQ('\3', trellis.GetResult().front().back().front().second);
+	ASSERT_STREQ("3", trellis.GetResult().at(1).front().second.c_str());
+	ASSERT_STREQ("2", trellis.GetResult().at(2).front().second.c_str());
+	ASSERT_STREQ("1", trellis.GetResult().at(3).front().second.c_str());
+	ASSERT_STREQ("2", trellis.GetResult().at(4).front().second.c_str());
+	ASSERT_STREQ("3", trellis.GetResult().at(5).front().second.c_str());
+	ASSERT_STREQ("4", trellis.GetResult().at(6).front().second.c_str());
+	ASSERT_STREQ("1", trellis.GetResult().at(7).front().second.c_str());
+	ASSERT_STREQ("2", trellis.GetResult().at(8).front().second.c_str());
+//	ASSERT_STREQ("3", trellis.GetResult().at(9).front().second.c_str());
+	ASSERT_STREQ("1", trellis.GetResult().at(10).front().second.c_str());
+//	ASSERT_STREQ("5", trellis.GetResult().at(11).front().second.c_str());
+	ASSERT_STREQ("1", trellis.GetResult().at(12).front().second.c_str());
+	ASSERT_STREQ("2", trellis.GetResult().at(13).front().second.c_str());
+	ASSERT_STREQ("3", trellis.GetResult().back().front().second.c_str());
 }
 
 TEST_F(TrellisGraph_F, GFHandel_DSuite_HWV437_Saraband_LeftHand)	// Page 28, Figure 14
@@ -70,41 +69,40 @@ TEST_F(TrellisGraph_F, GFHandel_DSuite_HWV437_Saraband_LeftHand)	// Page 28, Fig
 	while (trellis.NextStep());
 	trellis.Finish();
 
-	ASSERT_EQ(1, trellis.GetResult().size());
-	ASSERT_EQ('\3', trellis.GetResult().front().front().front().second) << "may also be 4";
-	ASSERT_EQ('\1', trellis.GetResult().front().at(1).front().second);
-	ASSERT_EQ('\3', trellis.GetResult().front().at(2).front().second) << "may also be 4";
+	ASSERT_STREQ("3", trellis.GetResult().front().front().second.c_str()) << "may also be 4";
+	ASSERT_STREQ("1", trellis.GetResult().at(1).front().second.c_str());
+	ASSERT_STREQ("3", trellis.GetResult().at(2).front().second.c_str()) << "may also be 4";
 
-	ASSERT_EQ(LA_1, trellis.GetResult().front().at(3).front().first);
-	ASSERT_EQ('\1', trellis.GetResult().front().at(3).front().second);
-	ASSERT_EQ(MI_1, trellis.GetResult().front().at(3).back().first);
-	ASSERT_EQ('\2', trellis.GetResult().front().at(3).back().second);
+	ASSERT_EQ(LA_1, trellis.GetResult().at(3).front().first);
+	ASSERT_STREQ("1", trellis.GetResult().at(3).front().second.c_str());
+	ASSERT_EQ(MI_1, trellis.GetResult().at(3).back().first);
+	ASSERT_STREQ("2", trellis.GetResult().at(3).back().second.c_str());
 
-	ASSERT_EQ('\5', trellis.GetResult().front().at(4).front().second);
-//	ASSERT_EQ('\2', trellis.GetResult().front().at(5).front().second);
-	ASSERT_EQ('\1', trellis.GetResult().front().at(6).front().second);
-	ASSERT_EQ('\3', trellis.GetResult().front().at(7).front().second) << "may also be 4";
-	ASSERT_EQ('\2', trellis.GetResult().front().at(8).front().second);
-	ASSERT_EQ('\1', trellis.GetResult().front().at(9).front().second);
-	ASSERT_EQ('\2', trellis.GetResult().front().at(10).front().second);
-	ASSERT_EQ('\5', trellis.GetResult().front().at(11).front().second);
+	ASSERT_STREQ("5", trellis.GetResult().at(4).front().second.c_str());
+//	ASSERT_STREQ("2", trellis.GetResult().at(5).front().second.c_str());
+	ASSERT_STREQ("1", trellis.GetResult().at(6).front().second.c_str());
+	ASSERT_STREQ("3", trellis.GetResult().at(7).front().second.c_str()) << "may also be 4";
+	ASSERT_STREQ("2", trellis.GetResult().at(8).front().second.c_str());
+	ASSERT_STREQ("1", trellis.GetResult().at(9).front().second.c_str());
+	ASSERT_STREQ("2", trellis.GetResult().at(10).front().second.c_str());
+	ASSERT_STREQ("5", trellis.GetResult().at(11).front().second.c_str());
 
-//	ASSERT_EQ('\3', trellis.GetResult().front().at(12).front().second);
-//	ASSERT_EQ('\2', trellis.GetResult().front().at(13).front().second);
-//	ASSERT_EQ('\5', trellis.GetResult().front().at(14).front().second);
-//	ASSERT_EQ('\4', trellis.GetResult().front().at(15).front().second);
-//	ASSERT_EQ('\3', trellis.GetResult().front().at(16).front().second) << "may also be 2";
-//	ASSERT_EQ('\5', trellis.GetResult().front().at(17).front().second) << "may also be 4";
-	ASSERT_EQ('\1', trellis.GetResult().front().at(18).front().second);
+//	ASSERT_STREQ("3", trellis.GetResult().at(12).front().second.c_str());
+//	ASSERT_STREQ("2", trellis.GetResult().at(13).front().second.c_str());
+//	ASSERT_STREQ("5", trellis.GetResult().at(14).front().second.c_str());
+//	ASSERT_STREQ("4", trellis.GetResult().at(15).front().second.c_str());
+//	ASSERT_STREQ("3", trellis.GetResult().at(16).front().second.c_str()) << "may also be 2";
+//	ASSERT_STREQ("5", trellis.GetResult().at(17).front().second.c_str()) << "may also be 4";
+	ASSERT_STREQ("1", trellis.GetResult().at(18).front().second.c_str());
 
-	ASSERT_EQ('\5', trellis.GetResult().front().at(19).front().second);
-//	ASSERT_EQ('\2', trellis.GetResult().front().at(20).front().second);
-	ASSERT_EQ('\1', trellis.GetResult().front().at(21).front().second);
-	ASSERT_EQ('\5', trellis.GetResult().front().at(22).front().second);
+	ASSERT_STREQ("5", trellis.GetResult().at(19).front().second.c_str());
+//	ASSERT_STREQ("2", trellis.GetResult().at(20).front().second.c_str());
+	ASSERT_STREQ("1", trellis.GetResult().at(21).front().second.c_str());
+	ASSERT_STREQ("5", trellis.GetResult().at(22).front().second.c_str());
 
-	ASSERT_EQ('\1', trellis.GetResult().front().at(23).front().second) << "may also be 2";
-//	ASSERT_EQ('\1', trellis.GetResult().front().at(24).front().second);
-//	ASSERT_EQ('\2', trellis.GetResult().front().at(25).front().second);
-//	ASSERT_EQ('\3', trellis.GetResult().front().at(26).front().second);
-//	ASSERT_EQ('\4', trellis.GetResult().front().at(27).front().second);
+	ASSERT_STREQ("1", trellis.GetResult().at(23).front().second.c_str()) << "may also be 2";
+//	ASSERT_STREQ("1", trellis.GetResult().at(24).front().second.c_str());
+//	ASSERT_STREQ("2", trellis.GetResult().at(25).front().second.c_str());
+//	ASSERT_STREQ("3", trellis.GetResult().at(26).front().second.c_str());
+//	ASSERT_STREQ("4", trellis.GetResult().at(27).front().second.c_str());
 }

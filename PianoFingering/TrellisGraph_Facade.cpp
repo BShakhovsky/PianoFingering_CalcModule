@@ -3,14 +3,13 @@
 # include "NodesLinker.h"
 
 using namespace std;
-using GraphStruct::Chord_;
 
 struct TrellisGraph_pimpl : private boost::noncopyable
 {
 	bool leftHand, unused[3];	// three padding bytes
 	size_t currStep;
 	vector<vector<int16_t>> chords;
-	vector<vector<Chord_>> result;
+	vector<vector<pair<int16_t, string>>> result;
 	NodesLinker trellis;
 };
 
@@ -27,7 +26,7 @@ TrellisGraph::~TrellisGraph()
 	delete pimpl_;
 }
 
-const vector<vector<Chord_>>& TrellisGraph::GetResult() const
+const vector<vector<pair<int16_t, string>>>& TrellisGraph::GetResult() const
 {
 	return pimpl_->result;
 }
@@ -55,24 +54,28 @@ void TrellisGraph::Finish()
 {
 	pimpl_->trellis.RemoveExpensivePaths();
 
-	pimpl_->result.reserve(pimpl_->trellis.GetResultedGraph().size());
-	for (const auto& path : pimpl_->trellis.GetResultedGraph())
+	for (size_t i(0); i < pimpl_->trellis.GetResultedGraph().front().size(); ++i)
 	{
-		pimpl_->result.emplace_back(vector<Chord_>());
-		pimpl_->result.back().reserve(path.size());
-		for (size_t i(0); i < path.size(); ++i)
-		{
-			pimpl_->result.back().push_back(path.at(i)->first);
-			if (pimpl_->leftHand) for (auto& note : pimpl_->result.back().back())
-				note.first = NOTE_MI - note.first;
-			if (pimpl_->chords.at(i).size() > 5)
-				transform(pimpl_->chords.at(i).cbegin() + 1, pimpl_->chords.at(i).cbegin()
-					+ static_cast<int>(pimpl_->chords.at(i).size()) - 4,
-					inserter(pimpl_->result.back().back(), pimpl_->result.back().back().begin() + 1),
-					[](int16_t note)
-					{
-						return make_pair(note, '\0');
-					});
-		}
+		vector<pair<int16_t, string>>
+			chord(pimpl_->trellis.GetResultedGraph().front().at(i)->first.size());
+		for (size_t j(0); j < pimpl_->trellis.GetResultedGraph().front().at(i)->first.size(); ++j)
+			chord.at(j).first = pimpl_->trellis.GetResultedGraph().front().at(i)->first.at(j).first;
+		for (const auto& path : pimpl_->trellis.GetResultedGraph())
+			for (size_t j(0); j < path.at(i)->first.size(); ++j)
+				if (find(chord.at(j).second.cbegin(), chord.at(j).second.cend(),
+						path.at(i)->first.at(j).second + '0') == chord.at(j).second.cend())
+					chord.at(j).second += path.at(i)->first.at(j).second + '0';
+
+		if (pimpl_->chords.at(i).size() > 5) transform(pimpl_->chords.at(i).cbegin() + 1,
+			pimpl_->chords.at(i).cbegin() + static_cast<int>(pimpl_->chords.at(i).size()) - 4,
+				inserter(chord, chord.begin() + 1),	[](int16_t note)
+													{
+														return make_pair(note, string("?"));
+													});
+
+		pimpl_->result.push_back(chord);
 	}
+	
+	if (pimpl_->leftHand)
+		for (auto& chord : pimpl_->result) for (auto& note : chord) note.first = NOTE_MI - note.first;
 }
