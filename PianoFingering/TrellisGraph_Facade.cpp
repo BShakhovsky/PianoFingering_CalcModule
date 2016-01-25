@@ -56,24 +56,24 @@ void TrellisGraph::Finish()
 
 	for (size_t i(0); i < pimpl_->trellis.GetResultedGraph().front().size(); ++i)
 	{
-		vector<pair<int16_t, string>>
-			chord(pimpl_->trellis.GetResultedGraph().front().at(i)->first.size());
-		for (size_t j(0); j < pimpl_->trellis.GetResultedGraph().front().at(i)->first.size(); ++j)
-			chord.at(j).first = pimpl_->trellis.GetResultedGraph().front().at(i)->first.at(j).first;
+		const auto& node(pimpl_->trellis.GetResultedGraph().front().at(i)->first);
+		vector<pair<int16_t, string>> resChord(node.size());
+		for (size_t j(0); j < node.size(); ++j) resChord.at(j).first = node.at(j).first;
 		for (const auto& path : pimpl_->trellis.GetResultedGraph())
 			for (size_t j(0); j < path.at(i)->first.size(); ++j)
-				if (find(chord.at(j).second.cbegin(), chord.at(j).second.cend(),
-						path.at(i)->first.at(j).second + '0') == chord.at(j).second.cend())
-					chord.at(j).second += path.at(i)->first.at(j).second + '0';
+				if (find(resChord.at(j).second.cbegin(), resChord.at(j).second.cend(),
+						path.at(i)->first.at(j).second + '0') == resChord.at(j).second.cend())
+					resChord.at(j).second += path.at(i)->first.at(j).second + '0';
 
-		if (pimpl_->chords.at(i).size() > 5) transform(pimpl_->chords.at(i).cbegin() + 1,
-			pimpl_->chords.at(i).cbegin() + static_cast<int>(pimpl_->chords.at(i).size()) - 4,
-				inserter(chord, chord.begin() + 1),	[](int16_t note)
-													{
-														return make_pair(note, string("?"));
-													});
+		const auto& chord(pimpl_->chords.at(i));
+		if (chord.size() > 5) transform(chord.cbegin() + 1, chord.cbegin()
+				+ static_cast<int>(chord.size()) - 4, inserter(resChord, resChord.begin() + 1),
+			[](int16_t note)
+			{
+				return make_pair(note, string("?"));
+			});
 
-		pimpl_->result.push_back(chord);
+		pimpl_->result.push_back(resChord);
 	}
 	
 	if (pimpl_->leftHand)
