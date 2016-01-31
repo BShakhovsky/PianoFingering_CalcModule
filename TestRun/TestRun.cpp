@@ -4,10 +4,10 @@
 
 int main()
 {
-	using std::vector;
+	using namespace std;
 
 	const MidiParser_Facade midi("../../../Test.mid");
-	vector<vector<int16_t>> chords({ { midi.GetNotes().at(1).front() } });
+	vector<set<int16_t>> chords({ { midi.GetNotes().at(1).front() } });
 	auto lastTime(static_cast<int>(midi.GetMilliSeconds().at(1).front()));
 	constexpr auto threshold(7);
 	for (auto note(midi.GetNotes().at(1).cbegin() + 1); note != midi.GetNotes().at(1).cend(); ++note)
@@ -15,7 +15,7 @@ int main()
 		const auto newTime(static_cast<int>(midi.GetMilliSeconds().at(1).at(
 			static_cast<size_t>(note - midi.GetNotes().at(1).cbegin()))));
 		if (newTime - lastTime < threshold)
-			chords.back().push_back(*note);
+			chords.back().insert(*note);
 		else
 			chords.push_back({ *note });
 		lastTime = newTime;
@@ -34,7 +34,7 @@ int main()
 	for (const auto& chord : graph.GetResult())
 	{
 		printf("|");
-		for (const auto& note : chord) printf("%s|", note.second.c_str());
+		for (const auto& note : chord) printf("%s|", note.c_str());
 		printf("\t");
 	}
 	puts("\n");

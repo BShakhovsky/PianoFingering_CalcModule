@@ -7,13 +7,13 @@ class TrellisGraph
 					// note "mi" for left hand is mirrow-equivalent to note "do" for right hand
 	TrellisGraph() = delete;
 public:
-	explicit TrellisGraph(const std::vector<std::vector<int16_t>>& chords, bool leftHand = false);
+	explicit TrellisGraph(const std::vector<std::set<int16_t>>& chords, bool leftHand = false);
 	~TrellisGraph();
 
 	size_t NextStep();
 	void Finish();
 
-	const std::vector<std::vector<std::pair<int16_t, std::string>>>& GetResult() const;
+	const std::vector<std::vector<std::string>>& GetResult() const;
 private:
 	struct TrellisGraph_pimpl* pimpl_;
 

@@ -6,6 +6,7 @@
 
 # include <algorithm>
 # include <memory>
+# include <set>
 # include <vector>
 
 # pragma warning(push)
