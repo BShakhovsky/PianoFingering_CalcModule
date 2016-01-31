@@ -6,8 +6,8 @@ using namespace std;
 
 // just partially tested
 
-double HorizontalCost::Calculate(const vector<pair<int16_t, char>> chord1,
-	const vector<pair<int16_t, char>> chord2, const vector<pair<int16_t, char>> chord3)
+double HorizontalCost::Calculate(const vector<pair<int16_t, char>>& chord1,
+	const vector<pair<int16_t, char>>& chord2, const vector<pair<int16_t, char>>& chord3)
 {
 	if		(!chord3.empty()) return CalcSingles(chord3) + CalcPairs(chord2, chord3) + CalcTriples(chord1, chord2, chord3);
 	else if (!chord2.empty()) return CalcSingles(chord2) + CalcPairs(chord1, chord2);	// beginning of Trellis graph
@@ -19,7 +19,7 @@ double HorizontalCost::Calculate(const vector<pair<int16_t, char>> chord1,
 	}
 }
 
-int HorizontalCost::CalcSingles(const vector<pair<int16_t, char>> chord)
+int HorizontalCost::CalcSingles(const vector<pair<int16_t, char>>& chord)
 {
 	assert("THERE SHOULD BE AT LEAST ONE NOTE IN THE CHORD TO CALCULATE MOVING COST OF SINGLES" && !chord.empty());
 	auto result(NULL);
@@ -27,7 +27,8 @@ int HorizontalCost::CalcSingles(const vector<pair<int16_t, char>> chord)
 	return result;
 }
 
-double HorizontalCost::CalcPairs(const vector<pair<int16_t, char>> chord1, const vector<pair<int16_t, char>> chord2)
+double HorizontalCost::CalcPairs(const vector<pair<int16_t, char>>& chord1,
+	const vector<pair<int16_t, char>>& chord2)
 {
 	assert("THERE SHOULD BE AT LEAST ONE NOTE IN BOTH CHORDS TO CALCULATE MOVING COST OF PAIR"
 		&& !chord1.empty() && !chord2.empty());
@@ -39,8 +40,8 @@ double HorizontalCost::CalcPairs(const vector<pair<int16_t, char>> chord1, const
 	return result / chord1.size() / chord2.size();
 }
 
-float HorizontalCost::CalcTriples(const vector<pair<int16_t, char>> chord1,
-	const vector<pair<int16_t, char>> chord2, const vector<pair<int16_t, char>> chord3)
+float HorizontalCost::CalcTriples(const vector<pair<int16_t, char>>& chord1,
+	const vector<pair<int16_t, char>>& chord2, const vector<pair<int16_t, char>>& chord3)
 {
 	assert("THERE SHOULD BE AT LEAST ONE NOTE IN ALL THREE CHORDS TO CALCULATE MOVING COST OF TRIPLE"
 		&& !chord1.empty() && !chord2.empty() && !chord3.empty());

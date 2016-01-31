@@ -21,7 +21,7 @@ public:
 	}
 	virtual void TearDown() override final {}
 
-	void CalcResult(vector<int16_t> notes, size_t resultSize)
+	void CalcResult(const vector<int16_t>& notes, size_t resultSize)
 	{
 		result_ = ChordFingVariations::CreateCombinations(notes);
 		ASSERT_EQ(resultSize, result_.size());
@@ -130,15 +130,15 @@ TEST_F(ChordFingVariations_F, CreateCombinations_Three)
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.at(6)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\3'), result_.at(6)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\1'), result_.at(6)->first.back());
-	ASSERT_EQ(8, result_.at(6)->second);
+	ASSERT_EQ(14, result_.at(6)->second);
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.at(7)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\4'), result_.at(7)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\1'), result_.at(7)->first.back());
-	ASSERT_EQ(20, result_.at(7)->second);
+	ASSERT_EQ(26, result_.at(7)->second);
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.at(8)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\5'), result_.at(8)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\1'), result_.at(8)->first.back());
-	ASSERT_EQ(54, result_.at(8)->second);
+	ASSERT_EQ(60, result_.at(8)->second);
 
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.at(9)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\1'), result_.at(9)->first.at(1));
@@ -147,11 +147,11 @@ TEST_F(ChordFingVariations_F, CreateCombinations_Three)
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.at(10)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\1'), result_.at(10)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\4'), result_.at(10)->first.back());
-	ASSERT_EQ(12, result_.at(10)->second);
+	ASSERT_EQ(16, result_.at(10)->second);
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.at(11)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\1'), result_.at(11)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\5'), result_.at(11)->first.back());
-	ASSERT_EQ(16, result_.at(11)->second);
+	ASSERT_EQ(28, result_.at(11)->second);
 
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.at(12)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\3'), result_.at(12)->first.at(1));
@@ -170,11 +170,11 @@ TEST_F(ChordFingVariations_F, CreateCombinations_Three)
 	ASSERT_EQ(make_pair(1i16, '\3'), result_.at(15)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\4'), result_.at(15)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\1'), result_.at(15)->first.back());
-	ASSERT_EQ(12, result_.at(15)->second);
+	ASSERT_EQ(22, result_.at(15)->second);
 	ASSERT_EQ(make_pair(1i16, '\3'), result_.at(16)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\5'), result_.at(16)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\1'), result_.at(16)->first.back());
-	ASSERT_EQ(32, result_.at(16)->second);
+	ASSERT_EQ(42, result_.at(16)->second);
 
 	ASSERT_EQ(make_pair(1i16, '\3'), result_.at(17)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\1'), result_.at(17)->first.at(1));
@@ -183,7 +183,7 @@ TEST_F(ChordFingVariations_F, CreateCombinations_Three)
 	ASSERT_EQ(make_pair(1i16, '\3'), result_.at(18)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\1'), result_.at(18)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\5'), result_.at(18)->first.back());
-	ASSERT_EQ(20, result_.at(18)->second);
+	ASSERT_EQ(24, result_.at(18)->second);
 
 	ASSERT_EQ(make_pair(1i16, '\3'), result_.at(19)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\4'), result_.at(19)->first.at(1));
@@ -194,7 +194,7 @@ TEST_F(ChordFingVariations_F, CreateCombinations_Three)
 	ASSERT_EQ(make_pair(1i16, '\4'), result_.at(20)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\5'), result_.at(20)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\1'), result_.at(20)->first.back());
-	ASSERT_EQ(24, result_.at(20)->second);
+	ASSERT_EQ(42, result_.at(20)->second);
 	ASSERT_EQ(make_pair(1i16, '\4'), result_.back()->first.front());
 	ASSERT_EQ(make_pair(2i16, '\1'), result_.back()->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\5'), result_.back()->first.back());
@@ -245,7 +245,7 @@ TEST_F(ChordFingVariations_F, CreateCombinations_Four)
 	ASSERT_EQ(make_pair(2i16, '\1'), result_.at(7)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\4'), result_.at(7)->first.at(2));
 	ASSERT_EQ(make_pair(4i16, '\5'), result_.at(7)->first.back());
-	ASSERT_EQ(12, result_.at(7)->second);
+	ASSERT_EQ(16, result_.at(7)->second);
 
 	ASSERT_EQ(make_pair(1i16, '\3'), result_.at(8)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\1'), result_.at(8)->first.at(1));
@@ -257,45 +257,45 @@ TEST_F(ChordFingVariations_F, CreateCombinations_Four)
 	ASSERT_EQ(make_pair(2i16, '\3'), result_.at(9)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\1'), result_.at(9)->first.at(2));
 	ASSERT_EQ(make_pair(4i16, '\4'), result_.at(9)->first.back());
-	ASSERT_EQ(16, result_.at(9)->second);
+	ASSERT_EQ(22, result_.at(9)->second);
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.at(10)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\3'), result_.at(10)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\1'), result_.at(10)->first.at(2));
 	ASSERT_EQ(make_pair(4i16, '\5'), result_.at(10)->first.back());
-	ASSERT_EQ(20, result_.at(10)->second);
+	ASSERT_EQ(30, result_.at(10)->second);
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.at(11)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\4'), result_.at(11)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\1'), result_.at(11)->first.at(2));
 	ASSERT_EQ(make_pair(4i16, '\5'), result_.at(11)->first.back());
-	ASSERT_EQ(32, result_.at(11)->second);
+	ASSERT_EQ(38, result_.at(11)->second);
 
 	ASSERT_EQ(make_pair(1i16, '\3'), result_.at(12)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\4'), result_.at(12)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\1'), result_.at(12)->first.at(2));
 	ASSERT_EQ(make_pair(4i16, '\5'), result_.at(12)->first.back());
-	ASSERT_EQ(24, result_.at(12)->second);
+	ASSERT_EQ(34, result_.at(12)->second);
 
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.at(13)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\3'), result_.at(13)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\4'), result_.at(13)->first.at(2));
 	ASSERT_EQ(make_pair(4i16, '\1'), result_.at(13)->first.back());
-	ASSERT_EQ(12, result_.at(13)->second);
+	ASSERT_EQ(30, result_.at(13)->second);
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.at(14)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\3'), result_.at(14)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\5'), result_.at(14)->first.at(2));
 	ASSERT_EQ(make_pair(4i16, '\1'), result_.at(14)->first.back());
-	ASSERT_EQ(32, result_.at(14)->second);
+	ASSERT_EQ(50, result_.at(14)->second);
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.at(15)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\4'), result_.at(15)->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\5'), result_.at(15)->first.at(2));
 	ASSERT_EQ(make_pair(4i16, '\1'), result_.at(15)->first.back());
-	ASSERT_EQ(32, result_.at(15)->second);
+	ASSERT_EQ(58, result_.at(15)->second);
 
 	ASSERT_EQ(make_pair(1i16, '\3'), result_.back()->first.front());
 	ASSERT_EQ(make_pair(2i16, '\4'), result_.back()->first.at(1));
 	ASSERT_EQ(make_pair(3i16, '\5'), result_.back()->first.at(2));
 	ASSERT_EQ(make_pair(4i16, '\1'), result_.back()->first.back());
-	ASSERT_EQ(24, result_.back()->second);
+	ASSERT_EQ(58, result_.back()->second);
 }
 
 TEST_F(ChordFingVariations_F, CreateCombinations_Five)
@@ -323,7 +323,7 @@ TEST_F(ChordFingVariations_F, CreateCombinations_Five)
 	ASSERT_EQ(make_pair(4i16, '\4'), result_.at(2)->first.at(3));
 	ASSERT_EQ(make_pair(5i16, '\5'), result_.at(2)->first.back());
 
-	ASSERT_EQ(16, result_.at(2)->second);
+	ASSERT_EQ(22, result_.at(2)->second);
 
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.at(3)->first.front());
 	ASSERT_EQ(make_pair(2i16, '\3'), result_.at(3)->first.at(1));
@@ -331,7 +331,7 @@ TEST_F(ChordFingVariations_F, CreateCombinations_Five)
 	ASSERT_EQ(make_pair(4i16, '\1'), result_.at(3)->first.at(3));
 	ASSERT_EQ(make_pair(5i16, '\5'), result_.at(3)->first.back());
 
-	ASSERT_EQ(24, result_.at(3)->second);
+	ASSERT_EQ(42, result_.at(3)->second);
 
 	ASSERT_EQ(make_pair(1i16, '\2'), result_.back()->first.front());
 	ASSERT_EQ(make_pair(2i16, '\3'), result_.back()->first.at(1));
@@ -339,7 +339,7 @@ TEST_F(ChordFingVariations_F, CreateCombinations_Five)
 	ASSERT_EQ(make_pair(4i16, '\5'), result_.back()->first.at(3));
 	ASSERT_EQ(make_pair(5i16, '\1'), result_.back()->first.back());
 
-	ASSERT_EQ(24, result_.back()->second);
+	ASSERT_EQ(72, result_.back()->second);
 }
 
 TEST_F(ChordFingVariations_F, CreateCombinations_Six)

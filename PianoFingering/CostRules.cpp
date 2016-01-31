@@ -5,7 +5,7 @@
 
 using std::pair;
 
-int CostRules::Rule1_StretchComf(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
+int CostRules::Rule1_StretchComf(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 // Python-profiler bottle-neck
 {
 	if (note1.second == note2.second) return NULL;
@@ -20,7 +20,7 @@ int CostRules::Rule1_StretchComf(const pair<int16_t, char> note1, const pair<int
 		return distance < minLimit ? (minLimit - distance) * 2 : NULL;
 	}
 }
-int CostRules::Rule2_SpanRel(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
+int CostRules::Rule2_SpanRel(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 {
 	if (note1.second == note2.second) return NULL;
 	const auto distance(note1.second < note2.second ? note2.first - note1.first : note1.first - note2.first);
@@ -36,8 +36,8 @@ int CostRules::Rule2_SpanRel(const pair<int16_t, char> note1, const pair<int16_t
 }
 
 // not covered by unit tests:
-int CostRules::Rule3_PositionChange(const pair<int16_t, char> note1, const pair<int16_t, char> note2,
-	const pair<int16_t, char> note3)	// Python-profiler bottle-neck
+int CostRules::Rule3_PositionChange(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2,
+	const pair<int16_t, char>& note3)	// Python-profiler bottle-neck
 {
 //	auto result(Rule4_PositionSize(note1, note3));
 	// instead copy from Rule 1:
@@ -92,7 +92,7 @@ char CostRules::Rule7_ThreeFour(const char finger1, const char finger2)
 	else									return NULL;
 }
 
-char CostRules::Rule8_FourOnBlack(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
+char CostRules::Rule8_FourOnBlack(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 {
 	if		(3 == note1.second && 4 == note2.second
 		&& BlackWhiteKeys::IsWhite(note1.first) && BlackWhiteKeys::IsBlack(note2.first))	return 1;
@@ -100,7 +100,7 @@ char CostRules::Rule8_FourOnBlack(const pair<int16_t, char> note1, const pair<in
 		&& BlackWhiteKeys::IsBlack(note1.first) && BlackWhiteKeys::IsWhite(note2.first))	return 1;
 	else																					return NULL;
 }
-float CostRules::Rule9_ThumbOnBlack(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
+float CostRules::Rule9_ThumbOnBlack(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 {
 	auto result(0.f);
 
@@ -119,7 +119,7 @@ float CostRules::Rule9_ThumbOnBlack(const pair<int16_t, char> note1, const pair<
 
 	return result;
 }
-char CostRules::Rule10_PinkyOnBlack(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
+char CostRules::Rule10_PinkyOnBlack(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 {
 	if		(5 == note1.second && BlackWhiteKeys::IsBlack(note1.first)
 		&& 5 != note2.second && BlackWhiteKeys::IsWhite(note2.first))	return 1;
@@ -128,7 +128,7 @@ char CostRules::Rule10_PinkyOnBlack(const pair<int16_t, char> note1, const pair<
 	else																return NULL;
 }
 
-char CostRules::Rule11_ThumbPassing(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
+char CostRules::Rule11_ThumbPassing(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 {
 	auto distance(note2.first - note1.first);
 	if 		(note1.second == note2.second)	return NULL;
@@ -138,7 +138,7 @@ char CostRules::Rule11_ThumbPassing(const pair<int16_t, char> note1, const pair<
 		BlackWhiteKeys::IsBlack(note1.first) == BlackWhiteKeys::IsBlack(note2.first))	return 1;
 	else																				return NULL;
 }
-char CostRules::Rule12_ThumbCross_Black(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
+char CostRules::Rule12_ThumbCross_Black(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 {
 	auto distance(note2.first - note1.first);
 	if (note1.second == note2.second)		return NULL;
@@ -153,8 +153,8 @@ char CostRules::Rule12_ThumbCross_Black(const pair<int16_t, char> note1, const p
 	else												return NULL;
 }
 
-char CostRules::Rule13_ThreeSameFinger(const pair<int16_t, char> note1, const pair<int16_t, char> note2,
-	const pair<int16_t, char> note3)
+char CostRules::Rule13_ThreeSameFinger(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2,
+	const pair<int16_t, char>& note3)
 {
 	if (note1.second == note3.second && (
 		note1.first < note2.first && note2.first < note3.first ||
@@ -162,7 +162,7 @@ char CostRules::Rule13_ThreeSameFinger(const pair<int16_t, char> note1, const pa
 	else															return NULL;
 }
 
-int CostRules::Rule14_MaxPractical(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
+int CostRules::Rule14_MaxPractical(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 {
 	if (note1.second == note2.second) return NULL;
 	const auto distance(note1.second < note2.second ? note2.first - note1.first : note1.first - note2.first);
@@ -176,14 +176,14 @@ int CostRules::Rule14_MaxPractical(const pair<int16_t, char> note1, const pair<i
 		return distance < minLimit ? (minLimit - distance) * 10 : NULL;
 	}
 }
-char CostRules::Rule15_SameNote(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
+char CostRules::Rule15_SameNote(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 {
 	if (note1.first == note2.first && note1.second != note2.second)	return 1;
 	else															return NULL;
 }
 
 // my own rule, not tested:
-char CostRules::Rule16_SameFinger(const pair<int16_t, char> note1, const pair<int16_t, char> note2)
+char CostRules::Rule16_SameFinger(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 {
 	if (note1.first != note2.first && note1.second == note2.second)	return static_cast<char>(8);
 	else															return NULL;

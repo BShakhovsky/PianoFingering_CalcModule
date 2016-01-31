@@ -5,15 +5,17 @@ class HorizontalCost abstract : private boost::noncopyable
 	HorizontalCost() = delete;
 	~HorizontalCost() = delete;
 public:
-	static double Calculate(std::vector<std::pair<int16_t, char>> chord1,
-		std::vector<std::pair<int16_t, char>> chord2, std::vector<std::pair<int16_t, char>> chord3);
+	static double Calculate(
+		const std::vector<std::pair<int16_t, char>>& chord1,
+		const std::vector<std::pair<int16_t, char>>& chord2,
+		const std::vector<std::pair<int16_t, char>>& chord3);
 private:
-	static int CalcSingles(std::vector<std::pair<int16_t, char>> chord);
+	static int CalcSingles(const std::vector<std::pair<int16_t, char>>& chord);
 	static double CalcPairs(
-		std::vector<std::pair<int16_t, char>> chord1,
-		std::vector<std::pair<int16_t, char>> chord2);
+		const std::vector<std::pair<int16_t, char>>& chord1,
+		const std::vector<std::pair<int16_t, char>>& chord2);
 	static float CalcTriples(
-		std::vector<std::pair<int16_t, char>> chord1,
-		std::vector<std::pair<int16_t, char>> chord2,
-		std::vector<std::pair<int16_t, char>> chord3);
+		const std::vector<std::pair<int16_t, char>>& chord1,
+		const std::vector<std::pair<int16_t, char>>& chord2,
+		const std::vector<std::pair<int16_t, char>>& chord3);
 };

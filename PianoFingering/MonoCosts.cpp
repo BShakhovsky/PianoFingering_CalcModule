@@ -11,7 +11,7 @@ int MonoCosts::CostOfSingle(const char finger) const
 }
 
 // fully tested:
-double MonoCosts::CostOfPair(const pair<int16_t, char> note1, const pair<int16_t, char> note2) const
+double MonoCosts::CostOfPair(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2) const
 {
 	return CostRules::Rule1_StretchComf(note1, note2)
 		+ CostRules::Rule2_SpanRel(note1, note2)
@@ -27,8 +27,8 @@ double MonoCosts::CostOfPair(const pair<int16_t, char> note1, const pair<int16_t
 }
 
 // not tested (do not know how - 3D-table?):
-int MonoCosts::CostOfThree(const pair<int16_t, char> note1, const pair<int16_t, char> note2,
-	const pair<int16_t, char> note3) const
+int MonoCosts::CostOfThree(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2,
+	const pair<int16_t, char>& note3) const
 {
 	return CostRules::Rule3_PositionChange(note1, note2, note3)	// Rule3 is also not tested
 //		+ CostRules::Rule4_PositionSize(note1, note3)

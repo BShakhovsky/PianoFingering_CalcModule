@@ -13,7 +13,7 @@ struct TrellisGraph_pimpl : private boost::noncopyable
 	NodesLinker trellis;
 };
 
-TrellisGraph::TrellisGraph(vector<vector<int16_t>> chords, const bool leftHand) :
+TrellisGraph::TrellisGraph(const vector<vector<int16_t>>& chords, const bool leftHand) :
 	pimpl_(new TrellisGraph_pimpl)
 {
 	pimpl_->chords = chords;

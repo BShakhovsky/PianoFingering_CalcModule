@@ -55,27 +55,17 @@ double NodesLinker::MinPathFinder(const shared_ptr<Node_> node)
 	return minVal;
 }
 
-class PathCompare
-{
-public:
-	PathCompare() = default;
-	PathCompare(const PathCompare&) = default;
-	PathCompare& operator = (const PathCompare&) = default;
-	~PathCompare() = default;
-
-	bool operator () (const NodeList_& lhs, const NodeList_& rhs) const
-	{
-		return lhs.back()->second < rhs.back()->second;
-	}
-};
-
 void NodesLinker::RemoveExpensivePaths()
 {
 	assert("CHORD MAY HAVE AT LEAST FIVE FINGER COMBINATION" && graph_.size() >= 5);
+	const auto PathCompare([](const NodeList_& lhs, const NodeList_& rhs)
+	{
+		return lhs.back()->second < rhs.back()->second;
+	});
 	for (auto i(2); graph_.cbegin() + (i - 1) != graph_.cend(); ++i)
 	{
-		partial_sort(graph_.begin(), graph_.begin() + i, graph_.end(), PathCompare());
-		if (PathCompare()(graph_.front(), graph_.at(static_cast<size_t>(i - 1))))
+		partial_sort(graph_.begin(), graph_.begin() + i, graph_.end(), PathCompare);
+		if (PathCompare(graph_.front(), graph_.at(static_cast<size_t>(i - 1))))
 		{
 			graph_.erase(graph_.cbegin() + i - 1, graph_.cend());
 			break;

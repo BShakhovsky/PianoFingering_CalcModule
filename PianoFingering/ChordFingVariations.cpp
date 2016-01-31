@@ -47,24 +47,24 @@ vector<vector<char>> ChordFingVariations::GetFingerCombinations(const size_t num
 
 vector<vector<char>> ChordFingVariations::OneFinger()
 {
-	return{ { 1 }, { 2 }, { 3 }, { 4 }, { 5 } };
+	return move(vector<vector<char>>{ { 1 }, { 2 }, { 3 }, { 4 }, { 5 } });
 }
 
 vector<vector<char>> ChordFingVariations::TwoFingers()
 {
-	return
+	return move(vector<vector<char>>
 	{
 		{ 1, 2 },	{ 1, 3 },	{ 1, 4 },	{ 1, 5 },
 		{ 2, 1 },	{ 2, 3 },	{ 2, 4 },	{ 2, 5 },
 		{ 3, 1 },				{ 3, 4 },	{ 3, 5 },
 		{ 4, 1 },							{ 4, 5 },
 		{ 5, 1 }
-	};
+	});
 }
 
 vector<vector<char>> ChordFingVariations::ThreeFingers()
 {
-	return
+	return move(vector<vector<char>>
 	{
 		{ 1, 2, 3 },{ 1, 2, 4 },{ 1, 2, 5 },
 					{ 1, 3, 4 },{ 1, 3, 5 },
@@ -78,21 +78,28 @@ vector<vector<char>> ChordFingVariations::ThreeFingers()
 								{ 3, 4, 5 },
 		{ 4, 5, 1 },
 								{ 4, 1, 5 }
-	};
+	});
 }
 
 vector<vector<char>> ChordFingVariations::FourFingers()
 {
-	return
+	return move(vector<vector<char>>
 	{
 		{ 1, 2, 3, 4 },{ 1, 2, 3, 5 },{ 1, 2, 4, 5 },{ 1, 3, 4, 5 },{ 2, 3, 4, 5 },
 		{ 2, 1, 3, 4 },{ 2, 1, 3, 5 },{ 2, 1, 4, 5 },{ 3, 1, 4, 5 },
 		{ 2, 3, 1, 4 },{ 2, 3, 1, 5 },{ 2, 4, 1, 5 },{ 3, 4, 1, 5 },
 		{ 2, 3, 4, 1 },{ 2, 3, 5, 1 },{ 2, 4, 5, 1 },{ 3, 4, 5, 1 }
-	};
+	});
 }
 
 vector<vector<char>> ChordFingVariations::FiveFingers()
 {
-	return{ { 1, 2, 3, 4, 5 }, { 2, 1, 3, 4, 5 }, { 2, 3, 1, 4, 5 }, { 2, 3, 4, 1, 5 }, { 2, 3, 4, 5, 1 } };
+	return move(vector<vector<char>>
+	{
+		{ 1, 2, 3, 4, 5 },
+		{ 2, 1, 3, 4, 5 },
+		{ 2, 3, 1, 4, 5 },
+		{ 2, 3, 4, 1, 5 },
+		{ 2, 3, 4, 5, 1 }
+	});
 }

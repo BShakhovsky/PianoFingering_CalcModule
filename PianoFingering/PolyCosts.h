@@ -13,11 +13,11 @@ public:
 		return NULL;
 	}
 
-	virtual double CostOfPair(std::pair<int16_t, char> note1,
-		std::pair<int16_t, char> note2) const override final;
+	virtual double CostOfPair(const std::pair<int16_t, char>& note1,
+		const std::pair<int16_t, char>& note2) const override final;
 
-	virtual int CostOfThree(std::pair<int16_t, char>, std::pair<int16_t, char>,
-		std::pair<int16_t, char>) const override final
+	virtual int CostOfThree(const std::pair<int16_t, char>&, const std::pair<int16_t, char>&,
+		const std::pair<int16_t, char>&) const override final
 	{
 		assert(!"COST OF THREE NOTES IS FOR SOME REASON NOT APPLICABLE"
 			&& !"FOR POLYPHONIC CHORD ACCORDING TO CURRENT ALGORITHM");
