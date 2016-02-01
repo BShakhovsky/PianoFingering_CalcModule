@@ -19,6 +19,7 @@ TrellisGraph::TrellisGraph(const vector<set<int16_t>>& chords, const bool leftHa
 	pimpl_->chords.reserve(chords.size());
 	for (const auto& chord : chords)
 		pimpl_->chords.emplace_back(vector<int16_t>(chord.cbegin(), chord.cend()));
+	pimpl_->trellis.ReserveResultSize(pimpl_->chords.size());
 	pimpl_->leftHand = leftHand;
 	pimpl_->currStep = 0;
 }
@@ -51,20 +52,9 @@ size_t TrellisGraph::NextStep()
 void TrellisGraph::Finish()
 {
 	pimpl_->trellis.RemoveExpensivePaths();
-
-	pimpl_->result.reserve(pimpl_->chords.size());
-	for (size_t i(0); i < pimpl_->trellis.GetResultedGraph().front().size(); ++i)
-	{
-		vector<string> resChord(pimpl_->trellis.GetResultedGraph().front().at(i)->first.size());
-		for (const auto& path : pimpl_->trellis.GetResultedGraph())
-			for (size_t j(0); j < path.at(i)->first.size(); ++j)
-				if (find(resChord.at(j).cbegin(), resChord.at(j).cend(),
-						path.at(i)->first.at(j).second + '0') == resChord.at(j).cend())
-					resChord.at(j) += path.at(i)->first.at(j).second + '0';
-
+	pimpl_->result = pimpl_->trellis.GetResultedGraph();
+	for (size_t i(0); i < pimpl_->result.size(); ++i)
 		if (pimpl_->chords.at(i).size() > 5)
-			resChord.insert(resChord.cbegin() + 1, string(pimpl_->chords.at(i).size() - 5, '?'));
-
-		pimpl_->result.push_back(resChord);
-	}
+			pimpl_->result.at(i).insert(pimpl_->result.at(i).cbegin() + 1,
+				string(pimpl_->chords.at(i).size() - 5, '?'));
 }

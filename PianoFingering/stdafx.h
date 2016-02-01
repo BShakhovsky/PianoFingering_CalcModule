@@ -4,13 +4,16 @@
 
 # pragma warning(disable:4710 4711)
 
-# include <algorithm>
 # include <cassert>
+
+# include <algorithm>
 # include <functional>
-# include <iterator>
+
 # include <memory>
-# include <set>
+
+# include <iterator>
 # include <vector>
+# include <set>
 
 # pragma warning(push)
 # pragma warning(disable:4668)

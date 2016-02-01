@@ -11,13 +11,13 @@ void NodesLinker::LinkNewNodes(const vector<int16_t>& chord)
 	if (graph_.empty())
 		for (const auto& node : ChordFingVariations::CreateCombinations(chord))
 		{
-			graph_.emplace_back(NodeList_({ node }));
+			graph_.emplace_back(NodeList_{ node });
 			graph_.back().back()->second +=
 				static_cast<float>(HorizontalCost::Calculate(graph_.back().back()->first, {}, {}));
 		}
 	else
 	{
-		vector<NodeList_> result;
+		Graph_ result;
 		for (const auto& node : ChordFingVariations::CreateCombinations(chord))
 		{
 			const auto minVal(MinPathFinder(node));
@@ -28,9 +28,12 @@ void NodesLinker::LinkNewNodes(const vector<int16_t>& chord)
 			}
 			node->second = static_cast<float>(minVal);
 		}
-		graph_.swap(result);
+		graph_ = result;
+
+		if (graph_.front().size() >= 3) RemoveDuplicates();
 	}
 }
+
 
 double NodesLinker::MinPathFinder(const shared_ptr<Node_> node)
 {
@@ -55,6 +58,50 @@ double NodesLinker::MinPathFinder(const shared_ptr<Node_> node)
 	return minVal;
 }
 
+void NodesLinker::RemoveDuplicates()
+{
+	auto ind(graph_.front().size() - 2);
+	for (; ind; --ind)
+	{
+		auto found(true);
+		for (size_t i(1); i < graph_.size(); ++i)
+			if (graph_.at(i).at(ind) != graph_.front().at(ind)) found = false;
+		if (found) break;
+	}
+	if (ind) AppendResult(ind);
+	assert("Wrong graph size" && graph_.size() >= 2);
+
+	graph_.erase(unique(graph_.begin(), graph_.end(),
+		[](const NodeList_& lhs, const NodeList_& rhs)
+		{
+			return equal(lhs.cbegin(), lhs.cend(), rhs.cbegin());
+		}
+	), graph_.cend());
+}
+
+void NodesLinker::AppendResult(const size_t sizeCount)
+{
+	for (size_t i(0); i < sizeCount; ++i)
+	{
+		result_.emplace_back(vector<string>(graph_.front().at(i)->first.size()));
+		for (const auto& path : graph_)
+			for (size_t j(0); j < path.at(i)->first.size(); ++j)
+				if (find(result_.back().at(j).cbegin(), result_.back().at(j).cend(),
+						path.at(i)->first.at(j).second + '0') == result_.back().at(j).cend())
+					result_.back().at(j) += path.at(i)->first.at(j).second + '0';
+	}
+	for (auto& path : graph_)
+	{
+		path.erase(path.cbegin(), path.cbegin() + static_cast<int>(sizeCount));
+		if (path.empty())
+		{
+			graph_.clear();
+			break;
+		}
+	}
+}
+
+
 void NodesLinker::RemoveExpensivePaths()
 {
 	assert("CHORD MAY HAVE AT LEAST FIVE FINGER COMBINATION" && graph_.size() >= 5);
@@ -71,4 +118,6 @@ void NodesLinker::RemoveExpensivePaths()
 			break;
 		}
 	}
+	AppendResult(graph_.front().size());
+	assert("Wrong graph size" && !result_.empty() && graph_.empty());
 }
