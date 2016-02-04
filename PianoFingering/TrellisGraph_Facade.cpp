@@ -39,11 +39,11 @@ size_t TrellisGraph::NextStep()
 	if (pimpl_->currStep >= pimpl_->chords.size()) return 0;
 
 	auto mirrowedChord(pimpl_->chords.at(pimpl_->currStep));
-	if (mirrowedChord.size() > 5) mirrowedChord.erase(mirrowedChord.cbegin() + 1,
-		mirrowedChord.cbegin() + static_cast<int>(mirrowedChord.size()) - 4);
 	if (pimpl_->leftHand) transform(pimpl_->chords.at(pimpl_->currStep).crbegin(),
 		pimpl_->chords.at(pimpl_->currStep).crend(), mirrowedChord.begin(),
 		bind1st(minus<int16_t>(), NOTE_MI));
+	if (mirrowedChord.size() > 5) mirrowedChord.erase(mirrowedChord.cbegin() + 1,
+		mirrowedChord.cbegin() + static_cast<int>(mirrowedChord.size()) - 4);
 	pimpl_->trellis.LinkNewNodes(mirrowedChord);
 	
 	return ++pimpl_->currStep;
@@ -54,7 +54,13 @@ void TrellisGraph::Finish()
 	pimpl_->trellis.RemoveExpensivePaths();
 	pimpl_->result = pimpl_->trellis.GetResultedGraph();
 	for (size_t i(0); i < pimpl_->result.size(); ++i)
+	{
 		if (pimpl_->chords.at(i).size() > 5)
+		{
+			const vector<string> leftOutNotes(pimpl_->chords.at(i).size() - 5, "?");
 			pimpl_->result.at(i).insert(pimpl_->result.at(i).cbegin() + 1,
-				string(pimpl_->chords.at(i).size() - 5, '?'));
+				leftOutNotes.cbegin(), leftOutNotes.cend());
+		}
+		if (pimpl_->leftHand) reverse(pimpl_->result.at(i).begin(), pimpl_->result.at(i).end());
+	}
 }

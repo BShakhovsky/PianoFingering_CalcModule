@@ -34,9 +34,9 @@ TEST_F(TrellisGraph_F, JSBach_Menuet4_BWVanh114_LeftHand)	// Page 27, Figure 12
 	while (trellis.NextStep());
 	trellis.Finish();
 
-	ASSERT_STREQ("1", trellis.GetResult().front().front().c_str());	// Re_1
-	ASSERT_STREQ("2", trellis.GetResult().front().at(1).c_str());	// Si
-	ASSERT_STREQ("4", trellis.GetResult().front().back().c_str());	// Sol'
+	ASSERT_STREQ("4", trellis.GetResult().front().front().c_str());
+	ASSERT_STREQ("2", trellis.GetResult().front().at(1).c_str());
+	ASSERT_STREQ("1", trellis.GetResult().front().back().c_str());
 
 	ASSERT_STREQ("3", trellis.GetResult().at(1).front().c_str());
 	ASSERT_STREQ("2", trellis.GetResult().at(2).front().c_str());
@@ -70,8 +70,8 @@ TEST_F(TrellisGraph_F, GFHandel_DSuite_HWV437_Saraband_LeftHand)	// Page 28, Fig
 	ASSERT_STREQ("1", trellis.GetResult().at(1).front().c_str());
 	ASSERT_STREQ("3", trellis.GetResult().at(2).front().c_str()) << "may also be 4";
 
-	ASSERT_STREQ("1", trellis.GetResult().at(3).front().c_str());	// Lya_1
-	ASSERT_STREQ("2", trellis.GetResult().at(3).back().c_str());	// Mi_1
+	ASSERT_STREQ("2", trellis.GetResult().at(3).front().c_str());
+	ASSERT_STREQ("1", trellis.GetResult().at(3).back().c_str());
 
 	ASSERT_STREQ("5", trellis.GetResult().at(4).front().c_str());
 //	ASSERT_STREQ("2", trellis.GetResult().at(5).front().c_str());

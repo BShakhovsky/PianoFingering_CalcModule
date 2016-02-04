@@ -6,14 +6,17 @@ int main()
 {
 	using namespace std;
 
+	const auto trackNo(0);
+
 	const MidiParser_Facade midi("../../../Test.mid");
-	vector<set<int16_t>> chords({ { midi.GetNotes().at(1).front() } });
-	auto lastTime(static_cast<int>(midi.GetMilliSeconds().at(1).front()));
-	constexpr auto threshold(7);
-	for (auto note(midi.GetNotes().at(1).cbegin() + 1); note != midi.GetNotes().at(1).cend(); ++note)
+	vector<set<int16_t>> chords({ { midi.GetNotes().at(trackNo).front() } });
+	auto lastTime(static_cast<int>(midi.GetMilliSeconds().at(trackNo).front()));
+	constexpr auto threshold(USER_TIMER_MINIMUM);	// should not be less than 7
+	for (auto note(midi.GetNotes().at(trackNo).cbegin() + 1);
+		note != midi.GetNotes().at(trackNo).cend(); ++note)
 	{
-		const auto newTime(static_cast<int>(midi.GetMilliSeconds().at(1).at(
-			static_cast<size_t>(note - midi.GetNotes().at(1).cbegin()))));
+		const auto newTime(static_cast<int>(midi.GetMilliSeconds().at(trackNo).at(
+			static_cast<size_t>(note - midi.GetNotes().at(trackNo).cbegin()))));
 		if (newTime - lastTime < threshold)
 			chords.back().insert(*note);
 		else
@@ -31,6 +34,14 @@ int main()
 	system("Pause");
 
 	ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
+	for (const auto& chord : chords)
+	{
+		printf("|");
+		for (const auto& note : chord) printf("%d|", note);
+		printf("\t");
+	}
+	puts("\n");
+	system("Pause");
 	for (const auto& chord : graph.GetResult())
 	{
 		printf("|");
