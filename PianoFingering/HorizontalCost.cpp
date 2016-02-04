@@ -36,7 +36,7 @@ double HorizontalCost::CalcPairs(const vector<pair<int16_t, char>>& chord1,
 	auto result(0.0);
 	for (const auto& note1 : chord1)
 		for (const auto& note2 : chord2)
-			result += MonoCosts().CostOfPair(note1, note2);
+			result += MonoCosts().CostOfPair_modified(note1, note2);
 	return result / chord1.size() / chord2.size();
 }
 

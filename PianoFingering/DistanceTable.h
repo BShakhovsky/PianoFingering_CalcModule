@@ -4,6 +4,8 @@ class DistanceTable abstract : private boost::noncopyable
 {
 	static const char distanceMatrix_[10][6];
 public:
+	static constexpr char MAX_PRACTICAL = 15;
+
 	static char MinPrac(char finger1, char finger2)
 	{
 		return distanceMatrix_[TableRow(finger1, finger2)][0];

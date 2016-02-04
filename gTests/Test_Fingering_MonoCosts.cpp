@@ -188,7 +188,7 @@ void Test_PartialMonoSum(size_t tableRow, size_t tableCol, char finger1, char fi
 		const auto nonThumb(MonoCosts_F_PartialMonoSum_Test().nonThumb);
 		ASSERT_EQ(NULL, MonoCosts().CostOfPair(make_pair(note1, nonThumb), make_pair(note2, nonThumb)));
 	}
-	else ASSERT_EQ(8, MonoCosts().CostOfPair(make_pair(note1, '\2'), make_pair(note2, '\2')));
+	else ASSERT_EQ(11, MonoCosts().CostOfPair(make_pair(note1, '\2'), make_pair(note2, '\2')));
 }
 
 
@@ -217,8 +217,8 @@ void Test_White_White(size_t tableRow, size_t tableCol, char finger1, char finge
 	}
 	else
 	{
-		ASSERT_EQ(8, MonoCosts().CostOfPair(make_pair(note1, finger1), make_pair(note2, finger1)));
-		ASSERT_EQ(8, MonoCosts().CostOfPair(make_pair(note2, finger2), make_pair(note1, finger2)));
+		ASSERT_EQ(11, MonoCosts().CostOfPair(make_pair(note1, finger1), make_pair(note2, finger1)));
+		ASSERT_EQ(11, MonoCosts().CostOfPair(make_pair(note2, finger2), make_pair(note1, finger2)));
 	}
 }
 
@@ -248,8 +248,8 @@ void Test_White_Black(size_t tableRow, size_t tableCol, char finger1, char finge
 	}
 	else
 	{
-		ASSERT_EQ(8, MonoCosts().CostOfPair(make_pair(note1, '\3'), make_pair(note2, '\3')));
-		ASSERT_EQ(8, MonoCosts().CostOfPair(make_pair(note2, '\4'), make_pair(note1, '\4')));
+		ASSERT_EQ(11, MonoCosts().CostOfPair(make_pair(note1, '\3'), make_pair(note2, '\3')));
+		ASSERT_EQ(11, MonoCosts().CostOfPair(make_pair(note2, '\4'), make_pair(note1, '\4')));
 	}
 }
 
@@ -279,8 +279,8 @@ void Test_Black_White(size_t tableRow, size_t tableCol, char finger1, char finge
 	}
 	else
 	{
-		ASSERT_EQ(8, MonoCosts().CostOfPair(make_pair(note1, '\4'), make_pair(note2, '\4')));
-		ASSERT_EQ(8, MonoCosts().CostOfPair(make_pair(note2, '\5'), make_pair(note1, '\5')));
+		ASSERT_EQ(11, MonoCosts().CostOfPair(make_pair(note1, '\4'), make_pair(note2, '\4')));
+		ASSERT_EQ(11, MonoCosts().CostOfPair(make_pair(note2, '\5'), make_pair(note1, '\5')));
 	}
 }
 
@@ -310,8 +310,8 @@ void Test_Black_Black(size_t tableRow, size_t tableCol, char finger1, char finge
 	}
 	else
 	{
-		ASSERT_EQ(8, MonoCosts().CostOfPair(make_pair(note1, '\2'), make_pair(note2, '\2')));
-		ASSERT_EQ(8, MonoCosts().CostOfPair(make_pair(note2, '\4'), make_pair(note1, '\4')));
+		ASSERT_EQ(11, MonoCosts().CostOfPair(make_pair(note1, '\2'), make_pair(note2, '\2')));
+		ASSERT_EQ(11, MonoCosts().CostOfPair(make_pair(note2, '\4'), make_pair(note1, '\4')));
 	}
 }
 

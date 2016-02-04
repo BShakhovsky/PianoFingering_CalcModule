@@ -122,16 +122,9 @@ TEST_F(NodesLinker_F, RemoveExpensivePaths)
 	graph.LinkNewNodes({ 0i16 });
 	graph.LinkNewNodes({ 9i16 });
 	ASSERT_EQ(0, graph.GetResultedGraph().size());
-//	ASSERT_EQ(8, graph.GetResultedGraph().front().back()->second) << "same finger rule";
-//	ASSERT_EQ(6, graph.GetResultedGraph().at(1).back()->second);
-//	ASSERT_EQ(2, graph.GetResultedGraph().at(2).back()->second);
-//	ASSERT_EQ(1, graph.GetResultedGraph().at(3).back()->second);
-//	ASSERT_EQ(1, graph.GetResultedGraph().back().back()->second);
 
 	graph.RemoveExpensivePaths();
 	ASSERT_EQ(2, graph.GetResultedGraph().size());
-//	ASSERT_EQ(1, graph.GetResultedGraph().front().back()->second);
-//	ASSERT_EQ(1, graph.GetResultedGraph().back().back()->second);
 	ASSERT_STREQ("1", graph.GetResultedGraph().front().front().c_str());
 	ASSERT_STREQ("54", graph.GetResultedGraph().back().front().c_str());
 }
@@ -212,9 +205,9 @@ TEST_F(NodesLinker_F, EllmenreichSpinningSong)	// Page 2, Figure 6
 	ASSERT_EQ(47, graph.GetResultedGraph().size());
 	ASSERT_STREQ("1", graph.GetResultedGraph().front().front().c_str());
 	ASSERT_STREQ("2", graph.GetResultedGraph().at(1).front().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(2).front().c_str());
-//	ASSERT_STREQ("\4", graph.GetResultedGraph().at(3).front().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(4).front().c_str());
+//	ASSERT_STREQ("3", graph.GetResultedGraph().at(2).front().c_str());
+//	ASSERT_STREQ("4", graph.GetResultedGraph().at(3).front().c_str());
+//	ASSERT_STREQ("3", graph.GetResultedGraph().at(4).front().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(5).front().c_str());
 //	ASSERT_STREQ("5", graph.GetResultedGraph().at(5).back().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(6).front().c_str());
@@ -223,24 +216,24 @@ TEST_F(NodesLinker_F, EllmenreichSpinningSong)	// Page 2, Figure 6
 	ASSERT_STREQ("5", graph.GetResultedGraph().at(7).back().c_str());
 
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(8).front().c_str());
-//	ASSERT_STREQ("\2", graph.GetResultedGraph().at(9).front().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(10).front().c_str());
-//	ASSERT_STREQ("\4", graph.GetResultedGraph().at(11).front().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(12).front().c_str());
+	ASSERT_STREQ("2", graph.GetResultedGraph().at(9).front().c_str());
+	ASSERT_STREQ("3", graph.GetResultedGraph().at(10).front().c_str());
+	ASSERT_STREQ("4", graph.GetResultedGraph().at(11).front().c_str());
+//	ASSERT_STREQ("3", graph.GetResultedGraph().at(12).front().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(13).front().c_str());
 //	ASSERT_STREQ("3", graph.GetResultedGraph().at(13).at(1).c_str());
 	ASSERT_STREQ("5", graph.GetResultedGraph().at(13).back().c_str());
-//	ASSERT_STREQ("\2", graph.GetResultedGraph().at(14).front().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(14).at(1).c_str());
+//	ASSERT_STREQ("2", graph.GetResultedGraph().at(14).front().c_str());
+//	ASSERT_STREQ("3", graph.GetResultedGraph().at(14).at(1).c_str());
 	ASSERT_STREQ("4", graph.GetResultedGraph().at(14).back().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(15).front().c_str());
 //	ASSERT_STREQ("3", graph.GetResultedGraph().at(15).at(1).c_str());
 	ASSERT_STREQ("5", graph.GetResultedGraph().at(15).back().c_str());
 
-//	ASSERT_STREQ("\1", graph.GetResultedGraph().at(16).front().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(16).back().c_str());
-//	ASSERT_STREQ("\2", graph.GetResultedGraph().at(17).front().c_str());
-//	ASSERT_STREQ("\4", graph.GetResultedGraph().at(17).back().c_str());
+//	ASSERT_STREQ("1", graph.GetResultedGraph().at(16).front().c_str());
+//	ASSERT_STREQ("3", graph.GetResultedGraph().at(16).back().c_str());
+//	ASSERT_STREQ("2", graph.GetResultedGraph().at(17).front().c_str());
+//	ASSERT_STREQ("4", graph.GetResultedGraph().at(17).back().c_str());
 	ASSERT_STREQ("3", graph.GetResultedGraph().at(18).front().c_str());
 	ASSERT_STREQ("5", graph.GetResultedGraph().at(18).back().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(19).front().c_str());
@@ -251,23 +244,23 @@ TEST_F(NodesLinker_F, EllmenreichSpinningSong)	// Page 2, Figure 6
 	ASSERT_STREQ("4", graph.GetResultedGraph().at(21).back().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(22).front().c_str());
 	ASSERT_STREQ("3", graph.GetResultedGraph().at(22).back().c_str());
-//	ASSERT_STREQ("\2", graph.GetResultedGraph().at(23).front().c_str());
-//	ASSERT_STREQ("\4", graph.GetResultedGraph().at(23).back().c_str());
+//	ASSERT_STREQ("2", graph.GetResultedGraph().at(23).front().c_str());
+//	ASSERT_STREQ("4", graph.GetResultedGraph().at(23).back().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(24).front().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(24).back().c_str());
-//	ASSERT_STREQ("\2", graph.GetResultedGraph().at(25).front().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(25).at(1).c_str());
+//	ASSERT_STREQ("3", graph.GetResultedGraph().at(24).back().c_str());
+//	ASSERT_STREQ("2", graph.GetResultedGraph().at(25).front().c_str());
+//	ASSERT_STREQ("3", graph.GetResultedGraph().at(25).at(1).c_str());
 	ASSERT_STREQ("4", graph.GetResultedGraph().at(25).back().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(26).front().c_str());
 //	ASSERT_STREQ("3", graph.GetResultedGraph().at(26).at(1).c_str());
 	ASSERT_STREQ("5", graph.GetResultedGraph().at(26).back().c_str());
 
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(27).front().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(27).back().c_str());
-//	ASSERT_STREQ("\2", graph.GetResultedGraph().at(28).front().c_str());
-//	ASSERT_STREQ("\4", graph.GetResultedGraph().at(28).back().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(29).front().c_str());
-//	ASSERT_STREQ("\5", graph.GetResultedGraph().at(29).back().c_str());
+//	ASSERT_STREQ("3", graph.GetResultedGraph().at(27).back().c_str());
+//	ASSERT_STREQ("2", graph.GetResultedGraph().at(28).front().c_str());
+//	ASSERT_STREQ("4", graph.GetResultedGraph().at(28).back().c_str());
+//	ASSERT_STREQ("3", graph.GetResultedGraph().at(29).front().c_str());
+//	ASSERT_STREQ("5", graph.GetResultedGraph().at(29).back().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(30).front().c_str());
 	ASSERT_STREQ("3", graph.GetResultedGraph().at(30).back().c_str());
 	ASSERT_STREQ("3", graph.GetResultedGraph().at(31).front().c_str());
@@ -276,19 +269,19 @@ TEST_F(NodesLinker_F, EllmenreichSpinningSong)	// Page 2, Figure 6
 	ASSERT_STREQ("4", graph.GetResultedGraph().at(32).back().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(33).front().c_str());
 	ASSERT_STREQ("3", graph.GetResultedGraph().at(33).back().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(34).front().c_str());
-//	ASSERT_STREQ("\5", graph.GetResultedGraph().at(34).back().c_str());
-//	ASSERT_STREQ("\2", graph.GetResultedGraph().at(35).front().c_str());
-//	ASSERT_STREQ("\4", graph.GetResultedGraph().at(35).back().c_str());
-//	ASSERT_STREQ("\1", graph.GetResultedGraph().at(36).front().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(37).front().c_str());
+//	ASSERT_STREQ("3", graph.GetResultedGraph().at(34).front().c_str());
+//	ASSERT_STREQ("5", graph.GetResultedGraph().at(34).back().c_str());
+//	ASSERT_STREQ("2", graph.GetResultedGraph().at(35).front().c_str());
+//	ASSERT_STREQ("4", graph.GetResultedGraph().at(35).back().c_str());
+//	ASSERT_STREQ("1", graph.GetResultedGraph().at(36).front().c_str());
+//	ASSERT_STREQ("3", graph.GetResultedGraph().at(37).front().c_str());
 	ASSERT_STREQ("2", graph.GetResultedGraph().at(38).front().c_str());
 
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(39).front().c_str());
 	ASSERT_STREQ("2", graph.GetResultedGraph().at(40).front().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(41).front().c_str());
-//	ASSERT_STREQ("\4", graph.GetResultedGraph().at(42).front().c_str());
-//	ASSERT_STREQ("\3", graph.GetResultedGraph().at(43).front().c_str());
+//	ASSERT_STREQ("3", graph.GetResultedGraph().at(41).front().c_str());
+//	ASSERT_STREQ("4", graph.GetResultedGraph().at(42).front().c_str());
+//	ASSERT_STREQ("3", graph.GetResultedGraph().at(43).front().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(44).front().c_str());
 //	ASSERT_STREQ("5", graph.GetResultedGraph().at(44).back().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(45).front().c_str());
@@ -446,10 +439,10 @@ TEST_F(NodesLinker_F, Entertainer)	// Figure 11
 	ASSERT_STREQ("1", graph3.GetResultedGraph().at(6).front().c_str());
 	ASSERT_STREQ("5", graph3.GetResultedGraph().at(7).front().c_str());
 
-//33	ASSERT_STREQ("43", graph3.GetResultedGraph().at(8).front().c_str());
-//22	ASSERT_STREQ("32", graph3.GetResultedGraph().at(9).front().c_str());
-//11	ASSERT_STREQ("21", graph3.GetResultedGraph().at(10).front().c_str());
-//22	ASSERT_STREQ("12", graph3.GetResultedGraph().at(11).front().c_str());
+	ASSERT_STREQ("3", graph3.GetResultedGraph().at(8).front().c_str()) << "may also be 4";
+	ASSERT_STREQ("2", graph3.GetResultedGraph().at(9).front().c_str()) << "may also be 3";
+	ASSERT_STREQ("1", graph3.GetResultedGraph().at(10).front().c_str()) << "may also be 2";
+	ASSERT_STREQ("2", graph3.GetResultedGraph().at(11).front().c_str()) << "may also be 1";
 
 	ASSERT_STREQ("3", graph3.GetResultedGraph().at(12).front().c_str());
 	ASSERT_STREQ("5", graph3.GetResultedGraph().at(13).front().c_str());
@@ -457,7 +450,7 @@ TEST_F(NodesLinker_F, Entertainer)	// Figure 11
 //	ASSERT_STREQ("3", graph3.GetResultedGraph().at(15).front().c_str());
 //	ASSERT_STREQ("2", graph3.GetResultedGraph().at(16).front().c_str());
 
-//	ASSERT_STREQ("54", graph3.GetResultedGraph().back().front().c_str());
+//32	ASSERT_STREQ("54", graph3.GetResultedGraph().back().front().c_str());
 }
 
 TEST_F(NodesLinker_F, FurElise)	// Figure 12
@@ -549,7 +542,7 @@ TEST_F(NodesLinker_F, FurElise)	// Figure 12
 	ASSERT_STREQ("2", graph.GetResultedGraph().at(23).front().c_str()) << "may also be 1";
 	ASSERT_STREQ("4", graph.GetResultedGraph().at(24).front().c_str()) << "may also be 3";
 	ASSERT_STREQ("3", graph.GetResultedGraph().at(25).front().c_str()) << "may also be 2";
-	ASSERT_STREQ("12", graph.GetResultedGraph().at(26).front().c_str());
+	ASSERT_STREQ("2", graph.GetResultedGraph().at(26).front().c_str()) << "may also be 1";
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(27).front().c_str());
 	ASSERT_STREQ("2", graph.GetResultedGraph().at(28).front().c_str());
 	ASSERT_STREQ("4", graph.GetResultedGraph().at(29).front().c_str());
@@ -631,7 +624,7 @@ TEST_F(NodesLinker_F, JSBach_Menuet4_BWVanh114)	// Page 27, Figure 12
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(6).front().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(7).front().c_str());
 
-//34	ASSERT_STREQ("4", graph.GetResultedGraph().at(8).front().c_str());
+	ASSERT_EQ('4', graph.GetResultedGraph().at(8).front().at(1));
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(9).front().c_str()) << "may also be 2";
 	ASSERT_STREQ("2", graph.GetResultedGraph().at(10).front().c_str()) << "may also be 1";
 	ASSERT_STREQ("3", graph.GetResultedGraph().at(11).front().c_str());
@@ -714,7 +707,7 @@ TEST_F(NodesLinker_F, GFHandel_DSuite_HWV437_Saraband)	// Page 28, Figure 14
 
 	graph.RemoveExpensivePaths();
 	ASSERT_EQ(43, graph.GetResultedGraph().size());
-//	ASSERT_STREQ("4", graph.GetResultedGraph().front().front().c_str());
+	ASSERT_EQ('4', graph.GetResultedGraph().front().front().at(1));
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(1).front().c_str());
 	ASSERT_STREQ("2", graph.GetResultedGraph().at(2).front().c_str());
 	ASSERT_STREQ("5", graph.GetResultedGraph().at(3).front().c_str());
@@ -749,7 +742,7 @@ TEST_F(NodesLinker_F, GFHandel_DSuite_HWV437_Saraband)	// Page 28, Figure 14
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(29).front().c_str());
 //	ASSERT_STREQ("3", graph.GetResultedGraph().at(30).front().c_str());
 //	ASSERT_STREQ("1", graph.GetResultedGraph().at(31).front().c_str());
-//	ASSERT_STREQ("4", graph.GetResultedGraph().at(31).back().sc_str();
+//	ASSERT_STREQ("4", graph.GetResultedGraph().at(31).back().c_str());
 	ASSERT_STREQ("2", graph.GetResultedGraph().at(32).front().c_str()) << "may also be 3";
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(33).front().c_str());
 
@@ -814,7 +807,7 @@ TEST_F(NodesLinker_F, AintMisbehavin)	// Figure 4.2
 //	ASSERT_STREQ("3", graph.GetResultedGraph().at(1).front().c_str());
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(2).front().c_str()) << "may also be 2";
 //	ASSERT_STREQ("3", graph.GetResultedGraph().at(3).front().c_str()) << "may also be 5";
-//	ASSERT_STREQ("3", graph.GetResultedGraph().at(4).front().c_str()) << "may also be 5";
+// ASSERT_STREQ("3", graph.GetResultedGraph().at(4).front().c_str()) << "may also be 5";
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(5).front().c_str());
 	ASSERT_STREQ("2", graph.GetResultedGraph().at(6).front().c_str()) << "may also be 3";
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(7).front().c_str());
@@ -878,16 +871,16 @@ TEST_F(NodesLinker_F, InterleavedTriad)	// Figure 4.4
 	graph.LinkNewNodes({ DO_1 });
 	graph.RemoveExpensivePaths();
 	ASSERT_EQ(13, graph.GetResultedGraph().size());
-//5	ASSERT_STREQ("4", graph.GetResultedGraph().front().front().c_str());
-//4	ASSERT_STREQ("2", graph.GetResultedGraph().at(1).front().c_str());
-//2	ASSERT_STREQ("1", graph.GetResultedGraph().at(2).front().c_str());
-//5	ASSERT_STREQ("2", graph.GetResultedGraph().at(3).front().c_str());
-//4	ASSERT_STREQ("1", graph.GetResultedGraph().at(4).front().c_str());
+//	ASSERT_STREQ("4", graph.GetResultedGraph().front().front().c_str());
+//	ASSERT_STREQ("2", graph.GetResultedGraph().at(1).front().c_str());
+//	ASSERT_STREQ("1", graph.GetResultedGraph().at(2).front().c_str());
+//	ASSERT_STREQ("2", graph.GetResultedGraph().at(3).front().c_str());
+//	ASSERT_STREQ("1", graph.GetResultedGraph().at(4).front().c_str());
 	ASSERT_STREQ("2", graph.GetResultedGraph().at(5).front().c_str());
 
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(6).front().c_str());
-//3	ASSERT_STREQ("2", graph.GetResultedGraph().at(6).at(1).c_str());
-//5	ASSERT_STREQ("4", graph.GetResultedGraph().at(6).back().c_str());
+//	ASSERT_STREQ("2", graph.GetResultedGraph().at(6).at(1).c_str());
+//	ASSERT_STREQ("4", graph.GetResultedGraph().at(6).back().c_str());
 
 	ASSERT_STREQ("1", graph.GetResultedGraph().at(7).front().c_str());
 	ASSERT_STREQ("2", graph.GetResultedGraph().at(8).front().c_str());
