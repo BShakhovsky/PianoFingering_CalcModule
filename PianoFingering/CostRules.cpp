@@ -185,15 +185,16 @@ char CostRules::Rule15_SameNote(const pair<int16_t, char>& note1, const pair<int
 // my own rule, not tested:
 char CostRules::Rule16_SameFinger(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 {
-	if (note1.first != note2.first && note1.second == note2.second)	return static_cast<char>(11);
-		/* ******************************************************
-		 * Cost of thumb-pinky with max practical interval of 15:
-		 * Rule 1 = (15 - 10) * 1 = 5
-		 * Rule 2 = (15 - 13) * 2 = 2 * 2 = 4
-		 * Rule 9 (thumb on black) = 1.5 max
-		 * 5 + 4 + 1.5 = 10.5 total
-		 *
-		 * Rule same finger gives more than 10.5 ==> 11
-		 * *****************************************************/
+	/* ***************************************************************
+	 * Cost of thumb-pinky/ring with min practical interval of -1(-3):
+	 * Rule 1 = (-1 - 7) * 1 = 8
+	 * Rule 2 = (-1 - 1) * 2 = 2 * 2 = 4
+	 * Rule 9 (thumb on black) = 1.5 max
+	 * Rule 12 (thumb passing on black) = 2 max
+	 * 8 + 4 + 1.5 + 2 = 15.5 total
+	 *
+	 * Rule same finger should give more than that:
+	 * *************************************************************** */
+	if (note1.first != note2.first && note1.second == note2.second)	return static_cast<char>(16);
 	else															return NULL;
 }

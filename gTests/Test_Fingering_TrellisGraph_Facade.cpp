@@ -74,7 +74,7 @@ TEST_F(TrellisGraph_F, GFHandel_DSuite_HWV437_Saraband_LeftHand)	// Page 28, Fig
 	ASSERT_STREQ("1", trellis.GetResult().at(3).back().c_str());
 
 	ASSERT_STREQ("5", trellis.GetResult().at(4).front().c_str());
-//	ASSERT_STREQ("2", trellis.GetResult().at(5).front().c_str());
+	ASSERT_STREQ("2", trellis.GetResult().at(5).front().c_str());
 	ASSERT_STREQ("1", trellis.GetResult().at(6).front().c_str());
 	ASSERT_STREQ("3", trellis.GetResult().at(7).front().c_str()) << "may also be 4";
 	ASSERT_STREQ("2", trellis.GetResult().at(8).front().c_str());
