@@ -39,13 +39,10 @@ int CostRules::Rule2_SpanRel(const pair<int16_t, char>& note1, const pair<int16_
 int CostRules::Rule3_PositionChange(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2,
 	const pair<int16_t, char>& note3)	// Python-profiler bottle-neck
 {
-//	auto result(Rule4_PositionSize(note1, note3));
-	// instead copy from Rule 1:
 	auto result(NULL);
 	auto distance(note3.first - note1.first);
-	if (//note1.second == note2.second || note2.second == note3.second ||
-		note3.second == note1.second)									return NULL;
-	else if (note1.second > note3.second)								distance *= -1;
+	if (note3.second == note1.second)		return NULL;
+	else if (note1.second > note3.second)	distance *= -1;
 
 	const auto maxLimit(DistanceTable::MaxComf(note1.second, note3.second));
 	if (distance > maxLimit) result = (distance - maxLimit);
@@ -61,7 +58,7 @@ int CostRules::Rule3_PositionChange(const pair<int16_t, char>& note1, const pair
 		distance > DistanceTable::MaxPrac(note1.second, note3.second)
 		) && (note1.first < note2.first && note2.first < note3.first ||
 			note1.first > note2.first && note2.first > note3.first))	++result;	// full-change
-	if (note1.first == note3.first /*&& note1.second != note3.second*/)	++result;
+	if (!distance /*&& note1.second != note3.second*/)					++result;
 
 	return result;
 }

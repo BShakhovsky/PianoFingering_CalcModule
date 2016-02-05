@@ -12,7 +12,7 @@ public:
 	virtual double CostOfPair(
 		const std::pair<int16_t, char>& note1,
 		const std::pair<int16_t, char>& note2) const override final;
-	virtual double CostOfPair_modified(
+	double CostOfPair_modified(
 		const std::pair<int16_t, char>& note1,
 		const std::pair<int16_t, char>& note2) const;
 
@@ -20,4 +20,8 @@ public:
 		const std::pair<int16_t, char>& note1,
 		const std::pair<int16_t, char>& note2,
 		const std::pair<int16_t, char>& note3) const override final;
+	int CostOfThree_modified(
+		const std::pair<int16_t, char>& note1,
+		const std::pair<int16_t, char>& note2,
+		const std::pair<int16_t, char>& note3) const;
 };
