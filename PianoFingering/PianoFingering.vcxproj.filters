@@ -101,9 +101,6 @@
     <ClCompile Include="NodesLinker.cpp">
       <Filter>Source Files\Trellis Graph</Filter>
     </ClCompile>
-    <ClCompile Include="BlackWhiteKeys.cpp">
-      <Filter>Source Files\Hand Costs\Input Data Values</Filter>
-    </ClCompile>
     <ClCompile Include="CostRules.cpp">
       <Filter>Source Files\Hand Costs\Input Data Values</Filter>
     </ClCompile>
