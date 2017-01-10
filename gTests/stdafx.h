@@ -6,6 +6,14 @@
 
 # pragma warning(push, 1)
 #	include <gtest\gtest.h>
+#	ifdef _DEBUG
+#		pragma comment(lib, "gtestd")
+#		pragma comment(lib, "gtest_main-mdd")
+#	else
+#		pragma comment(lib, "gtest")
+#		pragma comment(lib, "gtest_main")
+#	endif
+
 #	include <boost\function.hpp>
 #	include <boost\noncopyable.hpp>
 # pragma warning(pop)
