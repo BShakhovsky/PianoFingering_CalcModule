@@ -319,9 +319,9 @@ void Test_Black_Black(size_t tableRow, size_t tableCol, char finger1, char finge
 
 TEST_F(MonoCosts_F, CostOfPairs)
 {
-	int16_t note(NULL);
 	for (int16_t i(-5); i <= 15; ++i)
 	{
+		int16_t note(NULL);
 		while (BlackWhiteKeys::IsBlack(note = rand() % (INT16_MAX - 30) + 15) || BlackWhiteKeys::IsBlack(note + i));
 		CostTable::CheckTableCells(Test_White_White, note, note + i);
 		if (i && i != 12)
