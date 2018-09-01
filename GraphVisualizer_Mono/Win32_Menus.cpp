@@ -25,6 +25,9 @@ LRESULT CALLBACK Win32_Menus::WndProc(const HWND hWnd, const UINT message, const
 		auto wmId(LOWORD(wParam));
 		switch (wmId)
 		{
+			// Potentially throwing function passed to extern C function
+			// Undefined behavior may occur if this function throws
+#pragma warning(suppress:5039)
 		case IDM_ABOUT:	DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);	break;
 		case IDM_EXIT:	DestroyWindow(hWnd);											break;
 		default:		return DefWindowProc(hWnd, message, wParam, lParam);

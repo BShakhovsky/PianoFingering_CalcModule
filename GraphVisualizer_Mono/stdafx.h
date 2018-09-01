@@ -4,7 +4,7 @@
 
 # pragma warning(disable:4710 4711)
 
-#pragma warning(push, 0)
+#pragma warning(push, 3)
 #pragma warning(disable:4365 4571 4625 4626 4774 4820 5026 5027)
 #	include <iostream>
 #	include <list>
