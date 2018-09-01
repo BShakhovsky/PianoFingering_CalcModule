@@ -14,7 +14,7 @@ int MonoCosts::CostOfSingle(const char finger) const
 // fully tested:
 double MonoCosts::CostOfPair(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2) const
 {
-	return CostRules::Rule1_StretchComf(note1, note2)
+	return static_cast<double>(CostRules::Rule1_StretchComf(note1, note2))
 		+ CostRules::Rule2_SpanRel(note1, note2)
 		+ CostRules::Rule7_ThreeFour(note1.second, note2.second)
 		+ CostRules::Rule8_FourOnBlack(note1, note2)
@@ -30,7 +30,7 @@ double MonoCosts::CostOfPair_modified(const pair<int16_t, char>& note1, const pa
 {
 	// if interval is longer than thumb-pinky max practical, then it does not matter which fingers to use
 	return abs(note1.first - note2.first) > DistanceTable::MAX_PRACTICAL
-		? CostRules::Rule7_ThreeFour(note1.second, note2.second)
+		? static_cast<double>(CostRules::Rule7_ThreeFour(note1.second, note2.second))
 			+ CostRules::Rule8_FourOnBlack(note1, note2)
 			+ CostRules::Rule9_ThumbOnBlack(note1, note2)	// float
 			+ CostRules::Rule10_PinkyOnBlack(note1, note2)

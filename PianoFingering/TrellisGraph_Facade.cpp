@@ -4,6 +4,8 @@
 
 using namespace std;
 
+#pragma warning(push)
+#pragma warning(disable:26495) // leftHand uninitialized
 struct TrellisGraph_pimpl : private boost::noncopyable
 {
 	bool leftHand, unused[3];	// three padding bytes
@@ -12,6 +14,7 @@ struct TrellisGraph_pimpl : private boost::noncopyable
 	vector<vector<string>> result;
 	NodesLinker trellis;
 };
+#pragma warning(pop)
 
 TrellisGraph::TrellisGraph(const vector<set<int16_t>>& chords, const bool leftHand) :
 	pimpl_(new TrellisGraph_pimpl)

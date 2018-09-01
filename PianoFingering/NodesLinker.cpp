@@ -42,7 +42,7 @@ double NodesLinker::MinPathFinder(const shared_ptr<Node_> node)
 	minPaths_ = { graph_.cbegin() };
 	for (auto path(graph_.cbegin()); path != graph_.cend(); ++path)
 	{
-		const auto newVal(path->back()->second + node->second + (path->size() >= 2
+		const auto newVal(static_cast<double>(path->back()->second) + node->second + (path->size() >= 2
 			? HorizontalCost::Calculate(path->at(path->size() - 2)->first,	path->back()->first, node->first)
 			: HorizontalCost::Calculate(									path->back()->first, node->first, {})));
 
