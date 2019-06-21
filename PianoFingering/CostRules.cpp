@@ -5,6 +5,8 @@
 
 using std::pair;
 
+#pragma warning(push)
+#pragma warning(disable: 5045) // Compiler will insert Spectre mitigation for memory load
 int CostRules::Rule1_StretchComf(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 // Python-profiler bottle-neck
 {
@@ -34,6 +36,7 @@ int CostRules::Rule2_SpanRel(const pair<int16_t, char>& note1, const pair<int16_
 		return distance < minLimit ? (minLimit - distance) * (1 == note1.second || 1 == note2.second ? 1 : 2) : NULL;
 	}
 }
+#pragma warning(pop)
 
 // not covered by unit tests:
 int CostRules::Rule3_PositionChange(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2,
@@ -159,6 +162,8 @@ char CostRules::Rule13_ThreeSameFinger(const pair<int16_t, char>& note1, const p
 	else															return NULL;
 }
 
+#pragma warning(push)
+#pragma warning(disable: 5045) // Compiler will insert Spectre mitigation for memory load
 int CostRules::Rule14_MaxPractical(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 {
 	if (note1.second == note2.second) return NULL;
@@ -173,6 +178,7 @@ int CostRules::Rule14_MaxPractical(const pair<int16_t, char>& note1, const pair<
 		return distance < minLimit ? (minLimit - distance) * 10 : NULL;
 	}
 }
+#pragma warning(pop)
 char CostRules::Rule15_SameNote(const pair<int16_t, char>& note1, const pair<int16_t, char>& note2)
 {
 	if (note1.first == note2.first && note1.second != note2.second)	return 1;
