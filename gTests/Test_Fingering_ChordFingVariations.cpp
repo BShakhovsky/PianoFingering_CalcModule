@@ -354,7 +354,7 @@ TEST_F(ChordFingVariations_F, CreateCombinations_Six)
 	}
 	catch (const out_of_range& e)
 	{
-		ASSERT_STREQ("invalid vector<T> subscript", e.what()) << "size = 0, but 6 fingers";
+		ASSERT_STREQ("invalid vector subscript", e.what()) << "size = 0, but 6 fingers";
 	}
 # endif
 }

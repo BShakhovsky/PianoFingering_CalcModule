@@ -4,6 +4,8 @@
 
 using namespace std;
 
+//#pragma warning(push)
+#pragma warning(disable:5045) // Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 // only asserts are tested:
 double VerticalCost::Calculate(const vector<pair<int16_t, char>>& notes_fingers)
 {
@@ -74,3 +76,4 @@ double VerticalCost::Calculate(const vector<pair<int16_t, char>>& notes_fingers)
 
 	return result;
 }
+//#pragma warning(pop)

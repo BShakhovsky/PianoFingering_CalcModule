@@ -6,6 +6,8 @@
 using namespace std;
 using namespace GraphStruct;
 
+#pragma warning(push)
+#pragma warning(disable:5045) // Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 void NodesLinker::LinkNewNodes(const vector<int16_t>& chord)
 {
 	if (graph_.empty())
@@ -33,6 +35,7 @@ void NodesLinker::LinkNewNodes(const vector<int16_t>& chord)
 		if (graph_.front().size() >= 3) RemoveDuplicates();
 	}
 }
+#pragma warning(pop)
 
 
 double NodesLinker::MinPathFinder(const shared_ptr<Node_> node)
@@ -58,6 +61,8 @@ double NodesLinker::MinPathFinder(const shared_ptr<Node_> node)
 	return minVal;
 }
 
+#pragma warning(push)
+#pragma warning(disable:5045) // Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 void NodesLinker::RemoveDuplicates()
 {
 	auto ind(graph_.front().size() - 2);
@@ -100,6 +105,7 @@ void NodesLinker::AppendResult(const size_t sizeCount)
 		}
 	}
 }
+#pragma warning(pop)
 
 
 void NodesLinker::RemoveExpensivePaths()

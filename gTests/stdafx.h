@@ -5,9 +5,7 @@
 # pragma warning(disable:4710 4711)
 # pragma warning(push, 1)
 # pragma warning(disable:4365 4571 4625 4623 4626 4774 4820 5026 5027 5045)
-# pragma warning(disable:26439 26495)
-# pragma warning(disable:28182)	// Dereferencing NULL pointer
-								// 'p' contains the same NULL value as 'next_' did - linked_ptr.h 131
+# pragma warning(disable:26439 26495 26812 28182)
 #	include <gtest\gtest.h>
 #	ifdef _DEBUG
 #		pragma comment(lib, "gtestd")

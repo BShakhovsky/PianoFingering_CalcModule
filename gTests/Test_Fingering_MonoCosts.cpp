@@ -61,6 +61,8 @@ Rule6_ThreeFourFive(note1.second, note2.second, note3.second)
 Rule13_ThreeSameFinger(note1, note2, note3);
 ************************************************************/
 
+#pragma warning(push)
+#pragma warning(disable:5045) // Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 TEST_F(MonoCosts_F, PartialMonoSum)
 {
 # ifdef _DEBUG
@@ -172,6 +174,7 @@ TEST_F(MonoCosts_F, PartialMonoSum)
 		Test_PartialMonoSum(9, static_cast<size_t>(i + 5), '\5', '\4', whiteNote, whiteNote - i);
 	}
 }
+#pragma warning(pop)
 
 # pragma warning(push)
 # ifdef NDEBUG
@@ -268,7 +271,7 @@ void Test_Black_White(size_t tableRow, size_t tableCol, char finger1, char finge
 		{ 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0 },
 	};
-	ASSERT_EQ(black_white[tableRow][tableCol] + MonoCosts_F::partSum[tableRow][tableCol],
+	ASSERT_EQ(black_white[tableRow][tableCol] + static_cast<float>(MonoCosts_F::partSum[tableRow][tableCol]),
 		MonoCosts().CostOfPair(make_pair(note1, finger1), make_pair(note2, finger2)));
 
 	if (note1 == note2)
@@ -299,7 +302,7 @@ void Test_Black_Black(size_t tableRow, size_t tableCol, char finger1, char finge
 		{ 0, 0, 0, 0, 100, 0, 100, 0, 0, 0, 0, 100, 0, 0, 0, 0, 100, 0, 100, 0, 0 },
 		{ 0, 0, 0, 0, 100, 0, 100, 0, 0, 0, 0, 100, 0, 0, 0, 0, 100, 0, 100, 0, 0 },
 	};
-	ASSERT_EQ(black_black[tableRow][tableCol] + MonoCosts_F::partSum[tableRow][tableCol],
+	ASSERT_EQ(black_black[tableRow][tableCol] + static_cast<float>(MonoCosts_F::partSum[tableRow][tableCol]),
 		MonoCosts().CostOfPair(make_pair(note1, finger1), make_pair(note2, finger2)));
 
 	if (note1 == note2)
@@ -317,6 +320,8 @@ void Test_Black_Black(size_t tableRow, size_t tableCol, char finger1, char finge
 
 # pragma warning(pop)
 
+//#pragma warning(push)
+#pragma warning(disable:5045) // Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 TEST_F(MonoCosts_F, CostOfPairs)
 {
 	for (int16_t i(-5); i <= 15; ++i)
@@ -338,3 +343,4 @@ TEST_F(MonoCosts_F, CostOfPairs)
 		}
 	}
 }
+//#pragma warning(pop)

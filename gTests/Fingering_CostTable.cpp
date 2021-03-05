@@ -28,10 +28,11 @@ void CostTable::CheckTableCells(const FUNC_COST_TABLE func, const int16_t note1,
 	func(9, static_cast<size_t>(note2 - note1 + 5), '\5', '\4', note2, note1);
 }
 
-# pragma warning(push)
+//# pragma warning(push)
 # ifdef NDEBUG
 #	pragma warning(disable:4711)	// automatic inline expansion
 # endif
+#pragma warning(disable:5045) // Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 void CostTable::CheckAllTableCells(const FUNC_COST_TABLE func, const int16_t randNote)
 {
 # ifdef _DEBUG
@@ -44,4 +45,4 @@ void CostTable::CheckAllTableCells(const FUNC_COST_TABLE func, const int16_t ran
 # endif
 	for (int16_t i(-5); i <= 15; ++i) CheckTableCells(func, randNote, randNote + i);
 }
-# pragma warning(pop)
+//# pragma warning(pop)

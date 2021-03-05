@@ -104,6 +104,5 @@ void GraphPrinter::ChangePen(const HDC hDC) const
 	case 30: SelectObject(hDC, CreatePen(PS_SOLID, 8, RGB(0, 0, 0)));		break;
 	case 31: SelectObject(hDC, CreatePen(PS_SOLID, 9, RGB(0, 0, 0)));		break;
 	case 32: SelectObject(hDC, CreatePen(PS_SOLID, 10, RGB(0, 0, 0)));
-	default:																break;
 	}
 }

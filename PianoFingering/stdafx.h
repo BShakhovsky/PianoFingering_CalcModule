@@ -15,6 +15,7 @@
 #	include <iterator>
 #	include <vector>
 #	include <set>
+#	include <string>
 #pragma warning(pop)
 
 # pragma warning(push)

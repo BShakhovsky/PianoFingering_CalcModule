@@ -50,6 +50,6 @@ float HorizontalCost::CalcTriples(const vector<pair<int16_t, char>>& chord1,
 	for (const auto& note1 : chord1)
 		for (const auto& note2 : chord2)
 			for (const auto& note3 : chord3)
-				result += MonoCosts().CostOfThree(note1, note2, note3);
-	return result / chord1.size() / chord2.size() / chord3.size();
+				result += static_cast<float>(MonoCosts().CostOfThree(note1, note2, note3));
+	return result / static_cast<float>(chord1.size()) / static_cast<float>(chord2.size()) / static_cast<float>(chord3.size());
 }

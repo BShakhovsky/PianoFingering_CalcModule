@@ -5,6 +5,8 @@
 using namespace std;
 using namespace GraphStruct;
 
+#pragma warning(push)
+#pragma warning(disable:5045) // Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 NodeList_ ChordFingVariations::CreateCombinations(const vector<int16_t>& chord)
 {
 	const auto fingerings(GetFingerCombinations(chord.size()));
@@ -30,6 +32,7 @@ NodeList_ ChordFingVariations::CreateCombinations(const vector<int16_t>& chord)
 
 	return result;
 }
+#pragma warning(pop)
 
 vector<vector<char>> ChordFingVariations::GetFingerCombinations(const size_t numberOfFingers)
 {

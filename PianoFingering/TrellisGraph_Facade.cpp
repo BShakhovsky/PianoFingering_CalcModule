@@ -44,7 +44,7 @@ size_t TrellisGraph::NextStep()
 	auto mirrowedChord(pimpl_->chords.at(pimpl_->currStep));
 	if (pimpl_->leftHand) transform(pimpl_->chords.at(pimpl_->currStep).crbegin(),
 		pimpl_->chords.at(pimpl_->currStep).crend(), mirrowedChord.begin(),
-		bind1st(minus<int16_t>(), NOTE_MI));
+		bind(minus<int16_t>(), NOTE_MI, placeholders::_1));
 	if (mirrowedChord.size() > 5) mirrowedChord.erase(mirrowedChord.cbegin() + 1,
 		mirrowedChord.cbegin() + static_cast<int>(mirrowedChord.size()) - 4);
 	pimpl_->trellis.LinkNewNodes(mirrowedChord);
@@ -52,6 +52,8 @@ size_t TrellisGraph::NextStep()
 	return ++pimpl_->currStep;
 }
 
+#pragma warning(push)
+#pragma warning(disable:5045) // Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 void TrellisGraph::Finish()
 {
 	pimpl_->trellis.RemoveExpensivePaths();
@@ -67,3 +69,4 @@ void TrellisGraph::Finish()
 		if (pimpl_->leftHand) reverse(pimpl_->result.at(i).begin(), pimpl_->result.at(i).end());
 	}
 }
+#pragma warning(pop)
